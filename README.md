@@ -1,1 +1,2 @@
 # thunderbear
+# WP-Thor-Thunderbear
