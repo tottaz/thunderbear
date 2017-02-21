@@ -3,17 +3,17 @@
  * Jetpack Compatibility File
  * See: http://jetpack.me/
  *
- * @package Cycletrippin
+ * @package thunderbear
  */
 
 /**
  * Add theme support for Infinite Scroll.
  * See: http://jetpack.me/support/infinite-scroll/
  */
-function cycletrippin_jetpack_setup() {
+function thunderbear_jetpack_setup() {
 	add_theme_support( 'infinite-scroll', array(
 		'container' => 'main',
 		'footer'    => 'page',
 	) );
 }
-add_action( 'after_setup_theme', 'cycletrippin_jetpack_setup' );
+add_action( 'after_setup_theme', 'thunderbear_jetpack_setup' );

@@ -1,4 +1,5 @@
 <?php
+$project_feature_image	= get_field('project_feature_image');
 $project_feature_title	= get_field('project_feature_title');
 $project_feature_body	= get_field('project_feature_body');
 ?>
@@ -7,7 +8,14 @@ $project_feature_body	= get_field('project_feature_body');
 ================================================== -->
 <section id="project-features">
 	<div class="container">
+
+		<!-- If user uploaded an image -->
+		<?php if( !empty($project_feature_image) ) : ?>
 		
+		<img src="<?php echo $project_feature_image['url']; ?>" alt="<?php echo $project_feature_image['alt']; ?>">
+		
+		<?php endif; ?>
+
 		<h2><?php echo $project_feature_title; ?></h2>
 		<p class="lead"><?php echo $project_feature_body; ?></p>
 		

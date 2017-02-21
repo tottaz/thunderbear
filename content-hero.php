@@ -1,12 +1,12 @@
 <?php
 // Custom Fields
-$prelaunch_price		= get_post_meta( 7, 'prelaunch_price', true );
-$launch_price			= get_post_meta( 7, 'launch_price', true );
-$final_price			= get_post_meta( 7, 'final_price', true );
-$course_url				= get_post_meta( 7, 'course_url', true );
-$button_text			= get_post_meta( 7, 'button_text', true );
-?>
 
+$wordpress_install	=	get_field('wordpress_install');
+$mobile_apps 		=	get_field('mobile_apps');
+$sites_serviced		=	get_field('sites_serviced');
+$contact_url		=	get_field('contact_url');
+$button_text		=	get_field('button_text');
+?>
 
 <!-- HERO
 ================================================== -->
@@ -16,7 +16,11 @@ $button_text			= get_post_meta( 7, 'button_text', true );
 			<div class="row">
 				
 				<div class="col-sm-5">
-					<img src="<?php echo esc_url( get_template_directory_uri() ) ?>/assets/img/logo-badge.png" alt="Cycletrippin" class="logo">
+					<div id="tagline-home">
+						<div class="whatwedo active">
+							<h2>Start off ...</h2><small> ... on the right foot</small>
+						</div>
+						</div>
 				</div><!-- col -->
 				
 				<div class="col-sm-7 hero-text">
@@ -24,23 +28,23 @@ $button_text			= get_post_meta( 7, 'button_text', true );
 					<p class="lead"><?php bloginfo('description'); ?></p>				
 					
 					<div id="price-timeline">
-						<div class="price active">
-							<h4>Early Bird Price <small>Ends soon!</small></h4>
-							<span><?php echo $prelaunch_price; ?></span>
-						</div><!-- price -->
+						<div class="whatwedo active">
+							<h4>WordPress Sites<small>Installed!</small></h4>
+							<span><?php echo $wordpress_install; ?></span>
+						</div><!-- whatwedo -->
 						
-						<div class="price">
-							<h4>Launch Price <small>Coming soon!</small></h4>
-							<span><?php echo $launch_price; ?></span>
-						</div><!-- price -->
+						<div class="whatwedo">
+							<h4>Mobile Apps <small>developed!</small></h4>
+							<span><?php echo $mobile_apps; ?></span>
+						</div><!-- whatwedo -->
 						
-						<div class="price">
-							<h4>Final Price <small>Coming soon!</small></h4>
-							<span><?php echo $final_price; ?></span>
-						</div><!-- price -->
+						<div class="whatwedo">
+							<h4>Site Care <small>by us</small></h4>
+							<span><?php echo $sites_serviced; ?></span>
+						</div><!-- whatwedo -->
 					</div><!-- price-timeline -->
 					
-					<p><a class="btn btn-lg btn-danger" href="<?php echo $course_url; ?>" role="button"><?php echo $button_text; ?></a></p>
+					<p><a class="btn btn-lg btn-danger" href="<?php echo $contact_url; ?>" role="button"><?php echo $button_text; ?></a></p>
 					
 				</div><!-- col -->
 				

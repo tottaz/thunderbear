@@ -2,13 +2,13 @@
 /**
  * The template for displaying search results pages.
  *
- * @package Cycletrippin
+ * @package thunderbear
  */
 
 get_header(); ?>
 
 	<section class="feature-image feature-image-default-alt" data-type="background" data-speed="2">
-		<h1 class="page-title"><?php printf( __( 'Search Results for: %s', 'cycletrippin' ), '<span>' . get_search_query() . '</span>' ); ?></h1>
+		<h1 class="page-title"><?php printf( __( 'Search Results for: %s', 'thunderbear' ), '<span>' . get_search_query() . '</span>' ); ?></h1>
 	</section>
 
 	<div class="container">
@@ -32,7 +32,7 @@ get_header(); ?>
 	
 				<?php endwhile; ?>
 	
-				<?php cycletrippin_paging_nav(); ?>
+				<?php thunderbear_paging_nav(); ?>
 	
 			<?php else : ?>
 	

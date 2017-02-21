@@ -6,7 +6,7 @@ $features_section_body	= get_field('features_section_body');
 
 <!-- SERVICE FEATURES
 ================================================== -->
-<section id="course-features">
+<section id="service-features">
 	<div class="container">
 		<div class="section-header">
 			<!-- If user uploaded an image -->
@@ -39,4 +39,4 @@ $features_section_body	= get_field('features_section_body');
 			<?php endwhile; wp_reset_query(); ?>	
 		</div><!-- row -->		
 	</div><!-- container -->
-</section><!-- course-features -->
+</section><!-- service-features -->

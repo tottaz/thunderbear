@@ -8,7 +8,7 @@
  * E.g., it puts together the home page when no home.php file exists.
  * Learn more: http://codex.wordpress.org/Template_Hierarchy
  *
- * @package Cycletrippin
+ * @package thunderbear
  */
 
 get_header(); ?>
@@ -39,7 +39,7 @@ get_header(); ?>
 
 			<?php endwhile; ?>
 
-			<?php cycletrippin_paging_nav(); ?>
+			<?php thunderbear_paging_nav(); ?>
 
 			<?php else : ?>
 	

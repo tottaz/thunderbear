@@ -1,7 +1,6 @@
 <?php
-// Custom Fields
-$optin_text				= get_post_meta( 7, 'optin_text', true );
-$optin_button_text		= get_post_meta( 7, 'optin_button_text', true );	
+$optin_text				=	get_field('optin_text');
+$optin_button_text		=	get_field('optin_button_text');
 ?>
 
 <!-- OPT IN SECTION

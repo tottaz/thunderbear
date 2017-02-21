@@ -1,13 +1,13 @@
 /*
 Theme Name: Thor Thunderbear
-Theme URI: https://thunderbeardesign.com/themes/thor-thunderbear
+Theme URI: https://thunderbeardesign.com/themes/thunderbear
 Author: Thunderbear Design
 Author URI: https://thunderbeardesign.com
 Description: A custom WordPress theme using Bootstrap.
 Version: 1.0
 License: GNU General Public License v2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
-Text Domain: thor-thunderbear
+Text Domain: thunderbear
 Tags:  one-column, two-columns, right-sidebar, fluid-layout, custom-menu, featured-images, post-formats, sticky-post, translation-ready
 
 This theme, like WordPress, is licensed under the GPL.
@@ -38,6 +38,7 @@ Use it to make something cool, have fun, and share what you've learned with othe
 	12.1 Captions
 	12.2 Galleries
 13.0 Theme Specific Styles
+14.0 Easy Digital Download
 --------------------------------------------------------------*/
 
 /*--------------------------------------------------------------
@@ -70,6 +71,10 @@ Use it to make something cool, have fun, and share what you've learned with othe
 .navbar-nav > li.current_page_item a,
 .navbar-nav > li.current_page_parent a {
 	color: white;
+}
+
+.navbar-nav {
+	margin-top: 30px;
 }
 
 /* Small menu */
@@ -372,17 +377,15 @@ object {
    -------------------------------------- */
 
 /* COLOUR REFERENCES
-
 Green:		#79b044
 Salmon:		#dd5638
 Blue Gray:  #3e4249
-
 */
 
 /* === GENERAL === */
 
 body {
-	margin-top: 50px;
+	margin-top: 80px;
 	font-family: 'proxima-nova', 'Raleway', Helvetica, sans-serif;
 	font-size: 16px;
 	background: url('assets/img/tile.jpg') top left repeat;
@@ -519,10 +522,19 @@ blockquote:before {
 }
 
 
+/* --------------------------------------
+   14.0 Easy Digital Downlaod Theme Specific Styles
+   -------------------------------------- */
+
+#side-top { margin-top:100px; }
+
+
+
+
 /* === HERO === */
 
 #hero {
-	background: url('assets/img/hero-bg.jpg') 50% 0 repeat fixed;
+	background: url('assets/img/hero-bg.jpg') 50% -20% repeat fixed;
 	min-height: 500px;
 	padding: 40px 0;
 	color: white;
@@ -539,12 +551,50 @@ blockquote:before {
 	margin-top: 30px;
 }
 
+#tagline-home {
+	margin: 100px 0 100px;
+	text-align: center;
+}
+
+#tagline-home {
+	margin: 80px 0 60px;
+	text-align: center;
+}
+
+#tagline-home .whatwedo {
+	display: inline-block;
+	border-radius: 25px;
+	margin: 0 2% 0 0;
+	width: 80%;
+	background: #3e4249;
+	padding: 10px 20px 30px;
+	position: relative;
+	vertical-align: top;
+}
+
+#tagline-home .whatwedo.active {
+	background: #42918B;
+}
+
+#tagline-home h2 {
+	margin: 0 0 20px;
+}
+
+#tagline-home h2 small {
+	color: white;
+	font-weight: bold;
+	display: block;
+}
+
+
+
+
 #price-timeline {
 	margin: 30px 0 60px;
 	text-align: center;
 }
 
-#price-timeline .price {
+#price-timeline .whatwedo {
 	display: inline-block;
 	margin: 0 2% 0 0;
 	width: 30%;
@@ -554,11 +604,11 @@ blockquote:before {
 	vertical-align: top;
 }
 
-#price-timeline .price.active {
+#price-timeline .whatwedo.active {
 	background: #dd5638;
 }
 
-#price-timeline .price span {
+#price-timeline .whatwedo span {
 	background: #101010;
 	display: block;
 	height: 70px;
@@ -604,6 +654,13 @@ section.main-content {
 .section-header {
 	text-align: center;
 }
+
+.section-header img {
+	-webkit-border-radius: 50%;
+	-moz-border-radius: 50%;
+	border-radius: 50%;
+}
+
 
 section h2 {
 	margin: 20px 0 40px;
@@ -657,7 +714,7 @@ section h3 {
 	background: white;
 }
 
-#course-features {
+#service-features {
 	background: #3e4249;
 	color: white;
 	text-align: center;
@@ -667,22 +724,22 @@ section h3 {
 	text-align: center;
 }
 
-#featurette {
+#video-intro {
 	background: url('assets/img/stuff-bg.jpg') 50% 100% repeat fixed;
 	background-size: cover;
 	text-align: center;
 	color: white;
 }
 
-#instructor {
-	background: white url('assets/img/brad-elvis.png') 90% -10px no-repeat;
+#aboutus {
+	background: white url('assets/img/macbook-coding-no2.jpg') 90% -10px no-repeat;
 }
 
-#instructor h2 {
+#aboutus h2 {
 	margin: 0 0 20px;
 }
 
-#instructor .num {
+#aboutus .num {
 	display: table;
 	font-size: 30px;
 	font-weight: bold;
@@ -699,12 +756,12 @@ section h3 {
 	text-rendering: optimizelegibility;
 }
 
-#instructor .num .num-content {
+#aboutus .num .num-content {
 	display: table-cell;
 	vertical-align: middle;
 }
 
-#instructor .num span {
+#aboutus .num span {
 	display: block;
 	font-size: 20px;
 	font-weight: normal;
@@ -1018,7 +1075,7 @@ button[type="submit"]:hover {
 /* ==== MEDIA QUERIES ==== */
 
 @media screen and ( max-width : 991px ) {
-	#instructor .container {
+	#aboutus .container {
 		background: rgba(255,255,255,0.8);
 		padding: 20px;
 	}
@@ -1027,7 +1084,7 @@ button[type="submit"]:hover {
 /* Fix the top margin when logged in */
 @media screen and (max-width: 782px) {
 	.logged-in .navbar-fixed-top {
-		top: 46px;
+		top: 36px;
 	}
 }
 
@@ -1040,7 +1097,7 @@ button[type="submit"]:hover {
 		margin: 0 0 10px;
 	}
 	
-	#featurette iframe {
+	#video-intro iframe {
 		height: 240px;
 	}
 	
@@ -1059,13 +1116,13 @@ button[type="submit"]:hover {
 }
 
 @media screen and ( max-width : 568px ) {
-	#instructor .num {
+	#aboutus .num {
 		height: 100px;
 		width: 100px;
 		font-size: 22px;
 	}
 	
-	#instructor .num span {
+	#aboutus .num span {
 		font-size: 16px;
 	}
 	

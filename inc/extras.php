@@ -4,7 +4,7 @@
  *
  * Eventually, some of the functionality here could be replaced by core features
  *
- * @package Cycletrippin
+ * @package thunderbear
  */
 
 /**
@@ -13,11 +13,11 @@
  * @param array $args Configuration arguments.
  * @return array
  */
-function cycletrippin_page_menu_args( $args ) {
+function thunderbear_page_menu_args( $args ) {
 	$args['show_home'] = true;
 	return $args;
 }
-add_filter( 'wp_page_menu_args', 'cycletrippin_page_menu_args' );
+add_filter( 'wp_page_menu_args', 'thunderbear_page_menu_args' );
 
 /**
  * Adds custom classes to the array of body classes.
@@ -25,15 +25,78 @@ add_filter( 'wp_page_menu_args', 'cycletrippin_page_menu_args' );
  * @param array $classes Classes for the body element.
  * @return array
  */
-function cycletrippin_body_classes( $classes ) {
+function thunderbear_body_classes( $classes ) {
+	global $post;
+
 	// Adds a class of group-blog to blogs with more than 1 published author.
 	if ( is_multi_author() ) {
 		$classes[] = 'group-blog';
 	}
 
+	// Adds classes based on template
+	if ( is_front_page() && ! is_home() ) {
+		$classes[] = 'front-page';
+	}
+
+	if ( is_search() && 1 == get_theme_mod( 'thunderbear_advanced_search_results', 0 ) ) {
+		// Adds class based on empty EDD cart
+		$classes[] = 'vendd-advanced-search-results';
+	}
+
+	if ( thunderbear_edd_is_activated() ) {
+		// Adds classes based on EDD page template
+		if ( is_page_template( 'edd_templates/edd-downloads-shortcode.php' ) ) {
+			$classes[] = 'vendd-downloads-template vendd-edd-template';
+		} elseif ( is_page_template( 'edd_templates/edd-checkout.php' ) ) {
+			$classes[] = 'vendd-checkout-template vendd-edd-template';
+		} elseif ( is_page_template( 'edd_templates/edd-confirmation.php' ) ) {
+			$classes[] = 'vendd-confirmation-template vendd-edd-template';
+		} elseif ( is_page_template( 'edd_templates/edd-history.php' ) ) {
+			$classes[] = 'vendd-history-template vendd-edd-template';
+		} elseif ( is_page_template( 'edd_templates/edd-members.php' ) ) {
+			$classes[] = 'vendd-members-template vendd-edd-template';
+		} elseif ( is_page_template( 'edd_templates/edd-failed.php' ) ) {
+			$classes[] = 'vendd-failed-template vendd-edd-template';
+		}
+	}
+
+	if ( is_page_template( 'page_templates/landing.php' ) ) {
+		$classes[] = 'vendd-landing-page-template';
+	} elseif ( is_page_template( 'page_templates/full-width.php' ) ) {
+		$classes[] = 'vendd-full-width-page-template';
+	} elseif ( is_page_template( 'page_templates/focus.php' ) ) {
+		$classes[] = 'vendd-focus-page-template';
+	}
+
+	if ( thunderbear_edd_is_activated() && false === edd_get_cart_contents() ) {
+		// Adds class based on empty EDD cart
+		$classes[] = 'vendd-empty-cart';
+	}
+
+	if ( thunderbear_fes_is_activated() ) {
+		// Adds classes based on FES page template
+		if ( is_page_template( 'fes_templates/fes-dashboard.php' ) ) {
+			$classes[] = 'vendd-fes-dashboard-template vendd-edd-template vendd-fes-template';
+		} elseif ( is_page_template( 'fes_templates/fes-vendor.php' ) ) {
+			$classes[] = 'vendd-fes-vendor-template vendd-edd-template';
+		}
+	}
+
+	// Adds class based on whether or not is has a sidebar
+	if (	is_page_template( 'edd_templates/edd-checkout.php' ) ||
+			is_page_template( 'edd_templates/edd-confirmation.php' ) ||
+			is_page_template( 'edd_templates/edd-history.php' ) ||
+			is_page_template( 'edd_templates/edd-members.php' ) ||
+			is_page_template( 'edd_templates/edd-failed.php' ) ||
+			is_page_template( 'fes_templates/fes-vendor.php' ) ||
+			is_post_type_archive( 'download' ) ||
+			is_404() ) {
+		$classes[] = 'vendd-no-sidebar';
+	}
+
 	return $classes;
 }
-add_filter( 'body_class', 'cycletrippin_body_classes' );
+add_filter( 'body_class', 'thunderbear_body_classes' );
 
 /**
  * Filters wp_title to print a neat <title> tag based on what is being viewed.
@@ -42,7 +105,7 @@ add_filter( 'body_class', 'cycletrippin_body_classes' );
  * @param string $sep Optional separator.
  * @return string The filtered title.
  */
-function cycletrippin_wp_title( $title, $sep ) {
+function thunderbear_wp_title( $title, $sep ) {
 	if ( is_feed() ) {
 		return $title;
 	}
@@ -60,12 +123,12 @@ function cycletrippin_wp_title( $title, $sep ) {
 
 	// Add a page number if necessary:
 	if ( ( $paged >= 2 || $page >= 2 ) && ! is_404() ) {
-		$title .= " $sep " . sprintf( __( 'Page %s', 'cycletrippin' ), max( $paged, $page ) );
+		$title .= " $sep " . sprintf( __( 'Page %s', 'thunderbear' ), max( $paged, $page ) );
 	}
 
 	return $title;
 }
-add_filter( 'wp_title', 'cycletrippin_wp_title', 10, 2 );
+add_filter( 'wp_title', 'thunderbear_wp_title', 10, 2 );
 
 /**
  * Sets the authordata global when viewing an author archive.
@@ -79,11 +142,222 @@ add_filter( 'wp_title', 'cycletrippin_wp_title', 10, 2 );
  * @global WP_Query $wp_query WordPress Query object.
  * @return void
  */
-function cycletrippin_setup_author() {
+function thunderbear_setup_author() {
 	global $wp_query;
 
 	if ( $wp_query->is_author() && isset( $wp_query->post ) ) {
 		$GLOBALS['authordata'] = get_userdata( $wp_query->post->post_author );
 	}
 }
-add_action( 'wp', 'cycletrippin_setup_author' );
+add_action( 'wp', 'thunderbear_setup_author' );
+
+/**
+ * Add support for excerpts on pages.
+ */
+function thunderbear_download_excerpts() {
+	add_post_type_support( 'page', 'excerpt' );
+}
+add_action( 'init', 'thunderbear_download_excerpts' );
+
+
+/**
+ * Set excerpt length
+ */
+function custom_excerpt_length( $length ) {
+	return 35;
+}
+add_filter( 'excerpt_length', 'custom_excerpt_length', 999 );
+
+
+/**
+ * Replace excerpt ellipses with new ellipses and link to full article
+ */
+function thunderbear_excerpt_more( $more ) {
+	return '...</p><p class="continue-reading"><a class="more-link" href="' . get_permalink( get_the_ID() ) . '">' . get_theme_mod( 'thunderbear_read_more', __( 'Continue reading', 'vendd' ) ) . ' &rarr;</a></p>';
+}
+add_filter( 'excerpt_more', 'thunderbear_excerpt_more' );
+
+
+/**
+ * stupid skip link thing with the more tag -- remove it -- NOW
+ */
+function thunderbear_remove_more_tag_link_jump( $link ) {
+	$offset = strpos( $link, '#more-' );
+	if ( $offset ) {
+		$end = strpos( $link, '"', $offset );
+	}
+	if ( $end ) {
+		$link = substr_replace( $link, '', $offset, $end-$offset );
+	}
+	return $link;
+}
+add_filter( 'the_content_more_link', 'thunderbear_remove_more_tag_link_jump' );
+
+
+/**
+ * Removes Page Templates from Add/Edit Page screen based on plugin activation
+ *
+ * @return array
+ */
+function thunderbear_page_template_conditions( $page_templates ) {
+	if ( ! thunderbear_fes_is_activated() ) {
+		unset( $page_templates['fes_templates/fes-dashboard.php'] );
+		unset( $page_templates['fes_templates/fes-vendor.php'] );
+	}
+	if ( ! thunderbear_edd_is_activated() ) {
+		unset( $page_templates['edd_templates/edd-checkout.php'] );
+		unset( $page_templates['edd_templates/edd-confirmation.php'] );
+		unset( $page_templates['edd_templates/edd-failed.php'] );
+		unset( $page_templates['edd_templates/edd-history.php'] );
+		unset( $page_templates['edd_templates/edd-members.php'] );
+		unset( $page_templates['edd_templates/edd-downloads-shortcode.php'] );
+	}
+	return $page_templates;
+}
+add_filter( 'theme_page_templates', 'thunderbear_page_template_conditions' );
+
+/**
+ * Add Social Network URL Fields to User Profile
+ */
+function thunderbear_add_social_profiles( $contactmethods ) {
+
+	$contactmethods['twitter_profile']	= __( 'Twitter Profile URL', 'vendd' );
+	$contactmethods['facebook_profile']	= __( 'Facebook Profile URL', 'vendd' );
+	$contactmethods['gplus_profile']	= __( 'Google Plus Profile URL', 'vendd' );
+	$contactmethods['youtube_profile']	= __( 'YouTube Profile URL', 'vendd' );
+
+	return $contactmethods;
+}
+add_filter( 'user_contactmethods', 'thunderbear_add_social_profiles', 10, 1 );
+
+
+/**
+ * Filters posts_orderby to display advanced search results
+ */
+function thunderbear_advanced_search_results( $orderby, $query ) {
+	global $wpdb;
+
+	if ( $query->is_search && ( class_exists( 'bbPress' ) && ! is_bbpress() ) ) {
+		return $wpdb->posts . '.post_type ASC';
+	}
+	return $orderby;
+}
+add_filter( 'posts_orderby', 'thunderbear_advanced_search_results', 10, 2 );
+
+
+/**
+ * Number of search results to show
+ */
+function thunderbear_search_filter( $query ) {
+	if ( $query->is_search && ! is_admin() && ( class_exists( 'bbPress' ) && ! is_bbpress() ) ) {
+		$query->set( 'posts_per_page', 99999 );
+	}
+	return $query;
+}
+add_filter( 'pre_get_posts', 'thunderbear_search_filter' );
+
+
+/**
+ * social profiles
+ *
+ * @since 1.1.5
+ */
+function thunderbear_social_profiles() {
+	if ( get_theme_mod( 'thunderbear_twitter' ) ||
+		 get_theme_mod( 'thunderbear_facebook' ) ||
+		 get_theme_mod( 'thunderbear_googleplus' ) ||
+		 get_theme_mod( 'thunderbear_github' ) ||
+		 get_theme_mod( 'thunderbear_instagram' ) ||
+		 get_theme_mod( 'thunderbear_tumblr' ) ||
+		 get_theme_mod( 'thunderbear_linkedin' ) ||
+		 get_theme_mod( 'thunderbear_youtube' ) ||
+		 get_theme_mod( 'thunderbear_pinterest' ) ||
+		 get_theme_mod( 'thunderbear_dribbble' ) ||
+		 get_theme_mod( 'thunderbear_wordpress' ) ) :
+	?>
+		<span class="social-links">
+			<?php
+				$social_profiles = array(
+					'twitter'    => array(
+						'class'  => 'vendd-twitter',
+						'icon'   => '<i class="fa fa-twitter-square"></i>',
+						'option' => esc_url( get_theme_mod( 'thunderbear_twitter' ) )
+					),
+					'facebook'   => array(
+						'class'  => 'vendd-facebook',
+						'icon'   => '<i class="fa fa-facebook-square"></i>',
+						'option' => esc_url( get_theme_mod( 'thunderbear_facebook' ) )
+					),
+					'googleplus' => array(
+						'class'  => 'vendd-googleplus',
+						'icon'   => '<i class="fa fa-google-plus-square"></i>',
+						'option' => esc_url( get_theme_mod( 'thunderbear_googleplus' ) )
+					),
+					'github'     => array(
+						'class'  => 'vendd-github',
+						'icon'   => '<i class="fa fa-github-square"></i>',
+						'option' => esc_url( get_theme_mod( 'thunderbear_github' ) )
+					),
+					'instagram'  => array(
+						'class'  => 'vendd-instagram',
+						'icon'   => '<i class="fa fa-instagram"></i>',
+						'option' => esc_url( get_theme_mod( 'thunderbear_instagram' ) )
+					),
+					'tumblr'     => array(
+						'class'  => 'vendd-tumblr',
+						'icon'   => '<i class="fa fa-tumblr-square"></i>',
+						'option' => esc_url( get_theme_mod( 'thunderbear_tumblr' ) )
+					),
+					'linkedin'   => array(
+						'class'  => 'vendd-linkedin',
+						'icon'   => '<i class="fa fa-linkedin-square"></i>',
+						'option' => esc_url( get_theme_mod( 'thunderbear_linkedin' ) )
+					),
+					'youtube'    => array(
+						'class'  => 'vendd-youtube',
+						'icon'   => '<i class="fa fa-youtube"></i>',
+						'option' => esc_url( get_theme_mod( 'thunderbear_youtube' ) )
+					),
+					'pinterest'  => array(
+						'class'  => 'vendd-pinterest',
+						'icon'   => '<i class="fa fa-pinterest-square"></i>',
+						'option' => esc_url( get_theme_mod( 'thunderbear_pinterest' ) )
+					),
+					'dribbble'   => array(
+						'class'  => 'vendd-dribbble',
+						'icon'   => '<i class="fa fa-dribbble"></i>',
+						'option' => esc_url( get_theme_mod( 'thunderbear_dribbble' ) )
+					),
+					'wordpress'  => array(
+						'class'  => 'vendd-wordpress',
+						'icon'   => '<i class="fa fa-wordpress"></i>',
+						'option' => esc_url( get_theme_mod( 'thunderbear_wordpress' ) )
+					),
+				);
+				foreach ( $social_profiles as $profile ) {
+					if ( '' != $profile[ 'option' ] ) :
+						echo '<a class="', $profile[ 'class' ], '" href="', $profile[ 'option' ], '">', $profile[ 'icon' ], '</a>';
+					endif;
+				}
+			?>
+		</span>
+	<?php
+	endif; // end check for any social profile
+}
+add_action( 'thunderbear_social_profiles', 'thunderbear_social_profiles' );
+
+
+/**
+ * Render document title for backwards compatibility
+ *
+ * @resource https://make.wordpress.org/core/2015/10/20/document-title-in-4-4/
+ * @since 1.1.4
+ */
+if ( ! function_exists( '_wp_render_title_tag' ) ) {
+	function thunderbear_render_title() {
+		?>
+		<title><?php wp_title( '|', true, 'right' ); ?></title>
+		<?php
+	}
+	add_action( 'wp_head', 'thunderbear_render_title' );
+}

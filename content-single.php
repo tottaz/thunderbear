@@ -1,6 +1,6 @@
 <?php
 /**
- * @package Cycletrippin
+ * @package thunderbear
  */
 ?>
 

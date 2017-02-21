@@ -4,7 +4,7 @@
  *
  * Displays all of the <head> section and everything up till <div id="content">
  *
- * @package Cycletrippin
+ * @package thunderbear
  */
 ?><!DOCTYPE html>
 <html <?php language_attributes(); ?>>
@@ -23,7 +23,7 @@
 <link href="<?php echo esc_url( get_template_directory_uri() ) ?>/assets/css/font-awesome/css/font-awesome.min.css" rel="stylesheet">
 
 <!-- Google Fonts -->
-<link href='http://fonts.googleapis.com/css?family=Raleway:400,700' rel='stylesheet' type='text/css'>
+<link href="//fonts.googleapis.com/css?family=Raleway:400,700" rel="stylesheet" type="text/css">
 
 <?php wp_head(); ?>
 
@@ -36,7 +36,7 @@
 
 <body <?php body_class(); ?>>
 <div id="page" class="hfeed site">
-	<a class="skip-link screen-reader-text" href="#content"><?php _e( 'Skip to content', 'cycletrippin' ); ?></a>
+	<a class="skip-link screen-reader-text" href="#content"><?php _e( 'Skip to content', 'thunderbear' ); ?></a>
 	
 	<!-- HEADER
 	================================================== -->
@@ -57,7 +57,7 @@
 							<span class="icon-bar"></span>
 						</button>
 						
-						<a class="navbar-brand" href="<?php echo esc_url( home_url( '/' ) ); ?>"><img src="<?php echo esc_url( get_template_directory_uri() ) ?>/assets/img/logo.png" alt="Cycletrippin"></a>
+						<a class="navbar-brand" href="<?php echo esc_url( home_url( '/' ) ); ?>"><img src="<?php echo esc_url( get_template_directory_uri() ) ?>/assets/img/logo.gif" alt="ThunderBear Design"></a>
 						
 					</div><!-- navbar-header -->
 					
@@ -70,14 +70,10 @@
 							'container'			=> 'nav',
 							'container_class'	=> 'navbar-collapse collapse',
 							'menu_class'		=> 'nav navbar-nav navbar-right'
-							
 						) );
 					?>
 					
 				</div><!-- container -->
-				
 			</div><!-- navbar -->
-			
 		</div><!-- navbar-wrapper -->
-		
 	</header>

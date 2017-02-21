@@ -1,9 +1,17 @@
 <?php
 /**
- * Cycletrippin functions and definitions
+ * thunderbear functions and definitions
  *
- * @package Cycletrippin
+ * @package thunderbear
  */
+
+/**
+ * Constants and important files
+ */
+define( 'THUNDERBEAR_NAME', 'ThunderBear Design' );
+define( 'THUNDERBEAR_AUTHOR', 'ThunderBear Design Team' );
+define( 'THUNDERBEAR_VERSION', '1.0.0' );
+define( 'THUNDERBEAR_HOME', 'https://thunderbeardesign.com/downloads/thor-thunderbear' );
 
 /**
  * Set the content width based on the theme's design and stylesheet.
@@ -25,7 +33,7 @@ function thunderbear_setup() {
 	/*
 	 * Make theme available for translation.
 	 * Translations can be filed in the /languages/ directory.
-	 * If you're building a theme based on Cycletrippin, use a find and replace
+	 * If you're building a theme based on thunderbear, use a find and replace
 	 * to change 'thunderbear' to the name of your theme in all the template files
 	 */
 	load_theme_textdomain( 'thunderbear', get_template_directory() . '/languages' );
@@ -114,9 +122,9 @@ add_action( 'widgets_init', 'thunderbear_widgets_init' );
 function thunderbear_scripts() {
 	wp_enqueue_style( 'thunderbear-style', get_stylesheet_uri() );
 
-	wp_enqueue_script( 'thunderbear-navigation', get_template_directory_uri() . '/js/navigation.js', array(), '20120206', true );
+	wp_enqueue_script( 'thunderbear-navigation', get_template_directory_uri() . '/assets/js/navigation.js', array(), '20120206', true );
 
-	wp_enqueue_script( 'thunderbear-skip-link-focus-fix', get_template_directory_uri() . '/js/skip-link-focus-fix.js', array(), '20130115', true );
+	wp_enqueue_script( 'thunderbear-skip-link-focus-fix', get_template_directory_uri() . '/assets/js/skip-link-focus-fix.js', array(), '20130115', true );
 
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
 		wp_enqueue_script( 'comment-reply' );
@@ -150,6 +158,49 @@ require get_template_directory() . '/inc/customizer.php';
 require get_template_directory() . '/inc/jetpack.php';
 
 /**
+ * Load Woocommerce compatibility file.
+ */
+require get_template_directory() . '/inc/woocommerce.php';
+
+/**
+ * Admin page
+ */
+//function thunderbear_updater() {
+//	require( get_template_directory() . '/inc/admin/updater/theme-updater.php' );
+//}
+//add_action( 'after_setup_theme', 'thunderbear_updater' );
+
+/**
+ * Custom conditional tags
+ */
+require get_template_directory() . '/inc/conditional-tags.php';
+
+/**
+ * Custom EDD functions
+ *
+ * Only require if Easy Digital Downloads is activated
+ */
+if ( thunderbear_edd_is_activated() ) {
+	require get_template_directory() . '/inc/edd-functions.php';
+}
+
+/**
+ * Custom FES for EDD functions
+ *
+ * Only require if Frontend Submissions for Easy Digital Downloads is activated
+ */
+if ( thunderbear_fes_is_activated() ) {
+	require get_template_directory() . '/inc/fes-functions.php';
+}
+
+/**
+ * Thunderbear's widgets
+ */
+if ( thunderbear_edd_is_activated() ) {
+	require get_template_directory() . '/inc/admin/widgets.php';
+}
+
+/**
  * Replaces the excerpt "more" text by a link.
  */
 function new_excerpt_more($more) {
@@ -157,4 +208,3 @@ function new_excerpt_more($more) {
 	return '... <a class="moretag" href="'. get_permalink($post->ID) . '"> continue reading &raquo;</a>';
 }
 add_filter('excerpt_more', 'new_excerpt_more');
-

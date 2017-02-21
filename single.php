@@ -2,7 +2,7 @@
 /**
  * The template for displaying all single posts.
  *
- * @package Cycletrippin
+ * @package thunderbear
  */
 
 get_header(); ?>
@@ -18,7 +18,7 @@ get_header(); ?>
 	
 				<?php get_template_part( 'content', 'single' ); ?>
 	
-				<?php cycletrippin_post_nav(); ?>
+				<?php thunderbear_post_nav(); ?>
 	
 				<?php
 					// If comments are open or we have at least one comment, load up the comment template
