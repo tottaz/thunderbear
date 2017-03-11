@@ -11,7 +11,7 @@
  */
 ?>
 
-<div id="secondary" class="widget-area" role="complementary">
+<aside class="col-sm-4">
 
 	<?php if ( ! dynamic_sidebar( 'sidebar-download' ) ) : ?>
 
@@ -26,13 +26,13 @@
 			<div class="widget widget_download_author">
 				<?php $user = new WP_User( $post->post_author ); ?>
 				<?php if ( apply_filters( 'thunderbear_show_single_download_author_avatar', true, $post ) ) { ?>
-					<span class="vendd-download-author"><?php echo get_avatar( $user->ID, 90 ); ?></span>
+					<span class="thunderbear-download-author"><?php echo get_avatar( $user->ID, 90 ); ?></span>
 				<?php } ?>
-				<ul class="vendd-details-list vendd-author-info">
+				<ul class="thunderbear-details-list thunderbear-author-info">
 					<?php if ( apply_filters( 'thunderbear_show_single_download_author_name', true, $post ) ) { ?>
-						<li class="vendd-details-list-item vendd-author-details">
-							<span class="vendd-detail-name"><?php _e( 'Author:', 'vendd' ); ?></span>
-							<span class="vendd-detail-info">
+						<li class="thunderbear-details-list-item thunderbear-author-details">
+							<span class="thunderbear-detail-name"><?php _e( 'Author:', 'thunderbear' ); ?></span>
+							<span class="thunderbear-detail-info">
 								<?php if ( thunderbear_fes_is_activated() ) {
 									$vendor_url = thunderbear_edd_fes_author_url( get_the_author_meta( 'ID', $post->post_author ) );
 									?>
@@ -46,9 +46,9 @@
 						</li>
 					<?php } ?>
 					<?php if ( apply_filters( 'thunderbear_show_single_download_author_since', true, $post ) ) { ?>
-						<li class="vendd-details-list-item vendd-author-details">
-							<span class="vendd-detail-name"><?php _e( 'Author since:', 'vendd' ); ?></span>
-							<span class="vendd-detail-info"><?php echo date_i18n( get_option( 'date_format' ), strtotime( $user->user_registered ) ); ?></span>
+						<li class="thunderbear-details-list-item thunderbear-author-details">
+							<span class="thunderbear-detail-name"><?php _e( 'Author since:', 'thunderbear' ); ?></span>
+							<span class="thunderbear-detail-info"><?php echo date_i18n( get_option( 'date_format' ), strtotime( $user->user_registered ) ); ?></span>
 						</li>
 					<?php } ?>
 					<?php
@@ -88,15 +88,15 @@
 								! empty( $facebook ) ||
 								! empty( $youtube ) ) {
 								?>
-								<li class="vendd-details-list-item vendd-author-details">
-									<div class="vendd-author-contact clear">
+								<li class="thunderbear-details-list-item thunderbear-author-details">
+									<div class="thunderbear-author-contact clear">
 										<?php
 											foreach ( $social_profiles as $profile ) {
 												if ( '' != $profile['data'] ) {
 													?>
-													<span class="vendd-contact-method">
+													<span class="thunderbear-contact-method">
 														<?php
-															printf( '<a href="%1$s" class="vendd-social-profile vendd-%2$s" target="_blank">%3$s</a>',
+															printf( '<a href="%1$s" class="thunderbear-social-profile thunderbear-%2$s" target="_blank">%3$s</a>',
 																$profile['data'],
 																$profile['name'],
 																$profile['icon']
@@ -108,8 +108,8 @@
 											}
 										?>
 										<?php if ( ! empty( $website ) ) { ?>
-											<span class="vendd-contact-method vendd-author-website">
-												<a href="<?php echo $website; ?>" title="<?php echo $user->display_name; echo _x( '\'s website', 'title attribute of the FES vendor\'s website link', 'vendd' ); ?>" class="vendd-social-profile vendd-website" target="_blank">
+											<span class="thunderbear-contact-method thunderbear-author-website">
+												<a href="<?php echo $website; ?>" title="<?php echo $user->display_name; echo _x( '\'s website', 'title attribute of the FES vendor\'s website link', 'thunderbear' ); ?>" class="thunderbear-social-profile thunderbear-website" target="_blank">
 													<i class="fa fa-home"></i>
 												</a>
 											</span>
@@ -125,9 +125,9 @@
 		<?php } ?>
 
 		<div class="widget widget_download_details">
-			<span class="widget-title"><?php _e( 'Download Details', 'vendd' ); ?></span>
-			<ul class="vendd-details-list">
-				<li class="vendd-details-list-item">
+			<span class="widget-title"><?php _e( 'Download Details', 'thunderbear' ); ?></span>
+			<ul class="thunderbear-details-list">
+				<li class="thunderbear-details-list-item">
 					<?php
 						$time_string = '<time class="entry-date published" datetime="%1$s">%2$s</time>';
 						$time_string = sprintf( $time_string,
@@ -137,35 +137,35 @@
 							esc_html( get_the_modified_date() )
 						);
 					?>
-					<span class="vendd-detail-name"><?php _e( 'Published:', 'vendd' ); ?></span>
-					<span class="vendd-detail-info"><?php echo $time_string; ?></span>
+					<span class="thunderbear-detail-name"><?php _e( 'Published:', 'thunderbear' ); ?></span>
+					<span class="thunderbear-detail-info"><?php echo $time_string; ?></span>
 				</li>
 				<?php if ( thunderbear_fes_is_activated() || apply_filters( 'thunderbear_show_sales_in_sidebar', false, $post ) ) { ?>
-					<li class="vendd-details-list-item">
+					<li class="thunderbear-details-list-item">
 						<?php $sales = apply_filters( 'thunderbear_download_sales_count', edd_get_download_sales_stats( $post->ID ), $post ); ?>
-						<span class="vendd-detail-name"><?php _e( 'Sales:', 'vendd' ); ?></span>
-						<span class="vendd-detail-info"><?php echo $sales; ?></span>
+						<span class="thunderbear-detail-name"><?php _e( 'Sales:', 'thunderbear' ); ?></span>
+						<span class="thunderbear-detail-info"><?php echo $sales; ?></span>
 					</li>
 				<?php } ?>
 				<?php if ( thunderbear_SL_is_activated() ) { ?>
-					<li class="vendd-details-list-item vendd-license-details">
+					<li class="thunderbear-details-list-item thunderbear-license-details">
 						<?php $licensed = apply_filters( 'thunderbear_download_is_licensed', get_post_meta( get_the_ID(), '_edd_sl_enabled', true ), $post ); ?>
-						<span class="vendd-detail-name"><?php _e( 'Licensed:', 'vendd' ); ?></span>
-						<span class="vendd-detail-info"><?php echo $licensed ? __( 'Yes', 'vendd' ) : __( 'No', 'vendd' ); ?></span>
+						<span class="thunderbear-detail-name"><?php _e( 'Licensed:', 'thunderbear' ); ?></span>
+						<span class="thunderbear-detail-info"><?php echo $licensed ? __( 'Yes', 'thunderbear' ) : __( 'No', 'thunderbear' ); ?></span>
 					</li>
-					<li class="vendd-details-list-item vendd-license-details">
+					<li class="thunderbear-details-list-item thunderbear-license-details">
 						<?php $version = apply_filters( 'thunderbear_download_version', get_post_meta( get_the_ID(), '_edd_sl_version', true ), $post ); ?>
-						<span class="vendd-detail-name"><?php _e( 'Current Version:', 'vendd' ); ?></span>
-						<span class="vendd-detail-info"><?php echo $version ? $version : __( 'Unversioned', 'vendd' ); ?></span>
+						<span class="thunderbear-detail-name"><?php _e( 'Current Version:', 'thunderbear' ); ?></span>
+						<span class="thunderbear-detail-info"><?php echo $version ? $version : __( 'Unversioned', 'thunderbear' ); ?></span>
 					</li>
 				<?php }
 
 					$categories = get_the_term_list( $post->ID, 'download_category', '', ', ', '' );
 					if ( '' != $categories ) {
 						?>
-						<li class="vendd-details-list-item">
-							<span class="vendd-detail-name"><?php _e( 'Categories:', 'vendd' ); ?></span>
-							<span class="vendd-detail-info"><?php echo $categories; ?></span>
+						<li class="thunderbear-details-list-item">
+							<span class="thunderbear-detail-name"><?php _e( 'Categories:', 'thunderbear' ); ?></span>
+							<span class="thunderbear-detail-info"><?php echo $categories; ?></span>
 						</li>
 						<?php
 					}
@@ -173,9 +173,9 @@
 					$tags = get_the_term_list( $post->ID, 'download_tag', '', ', ', '' );
 					if ( '' != $tags ) {
 						?>
-						<li class="vendd-details-list-item">
-							<span class="vendd-detail-name"><?php _e( 'Tags:', 'vendd' ); ?></span>
-							<span class="vendd-detail-info"><?php echo $tags; ?></span>
+						<li class="thunderbear-details-list-item">
+							<span class="thunderbear-detail-name"><?php _e( 'Tags:', 'thunderbear' ); ?></span>
+							<span class="thunderbear-detail-info"><?php echo $tags; ?></span>
 						</li>
 						<?php
 					}
@@ -187,4 +187,5 @@
 
 	<?php endif; // end sidebar widget area ?>
 
-</div><!-- #secondary -->
+</aside>
+

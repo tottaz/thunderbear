@@ -35,7 +35,7 @@ add_action( 'init', 'thunderbear_subtitles' );
  * Add HTML to the [downloads] shortcode for structure/styling
  */
 function thunderbear_downloads_shortcode_wrap_open() {
-	echo '<div class="vendd-download-information">';
+	echo '<div class="thunderbear-download-information">';
 }
 add_action( 'edd_download_before', 'thunderbear_downloads_shortcode_wrap_open' );
 
@@ -56,7 +56,7 @@ function thunderbear_edd_shortcodes_classes( $classes ) {
 		has_shortcode( $post->post_content, 'edd_register' ) ||
 		has_shortcode( $post->post_content, 'edd_profile_editor' )
 	) {
-		$classes[] = 'vendd-edd-fes-shortcode';
+		$classes[] = 'thunderbear-edd-fes-shortcode';
 	}
 
 	return $classes;
@@ -73,7 +73,7 @@ function thunderbear_empty_cart_content( $message ) {
 	$empty_cart_downloads_qty = intval( get_theme_mod( 'thunderbear_empty_cart_downloads_count', 6 ) );
 	
 	if ( thunderbear_edd_is_activated() && ! edd_is_checkout() ) {
-		$message = '<span>' . _x( 'Your cart is empty.', 'cart widget output when there are no items in the cart', 'vendd' ) . '</span>';
+		$message = '<span>' . _x( 'Your cart is empty.', 'cart widget output when there are no items in the cart', 'thunderbear' ) . '</span>';
 		return $message;
 	}
 
@@ -82,7 +82,7 @@ function thunderbear_empty_cart_content( $message ) {
 	if ( '' != $empty_cart_title ) {
 		echo '<h3 class="entry-title empty-cart-title">' . $empty_cart_title . '</h3>';
 	} else {
-		echo '<h3 class="entry-title empty-cart-title">' . _x( 'Your cart is empty.', 'default title output on checkout page when there are no items in the cart', 'vendd' ) . '</h3>';
+		echo '<h3 class="entry-title empty-cart-title">' . _x( 'Your cart is empty.', 'default title output on checkout page when there are no items in the cart', 'thunderbear' ) . '</h3>';
 	}
 
 	if ( '' != $empty_cart_text ) {

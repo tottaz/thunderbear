@@ -1,7 +1,7 @@
 <?php if ( thunderbear_fes_is_activated() || apply_filters( 'thunderbear_show_downloads_byline', false ) ) { ?>
 	<div class="edd_download_byline">
 		<span class="edd_byline_author_avatar"><?php echo get_avatar( get_the_author_meta( 'ID', $post->post_author ), 25, null ); ?></span>
-		<span class="edd_byline_by"><?php _e( 'by', 'vendd' ) . ' '; ?></span>
+		<span class="edd_byline_by"><?php _e( 'by', 'thunderbear' ) . ' '; ?></span>
 		<span class="edd_byline_author">
 			<?php if ( thunderbear_fes_is_activated() ) {
 				$vendor_url = thunderbear_edd_fes_author_url( get_the_author_meta( 'ID', $post->post_author ) );

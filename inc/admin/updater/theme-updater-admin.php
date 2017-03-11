@@ -160,7 +160,7 @@ class Thunderbear_Updater_Admin {
 					<li><?php _e( 'Enter your license key.', 'thor-thunderbear' ); ?></li>
 					<li><?php _e( 'Click the "Save License Key Changes" button.', 'thor-thunderbear' ); ?></li>
 					<li><?php _e( 'Click the new "Activate License" button.', 'thor-thunderbear' ); ?></li>
-					<li><?php _e( 'You\'re done! The status of your license displays below the License Key field.', 'vendd' ); ?></li>
+					<li><?php _e( 'You\'re done! The status of your license displays below the License Key field.', 'thunderbear' ); ?></li>
 				</ol>
 				<form method="post" action="options.php">
 					<?php settings_fields( $this->theme_slug . '-license' ); ?>
@@ -200,13 +200,13 @@ class Thunderbear_Updater_Admin {
 			$thunderbear_parent = wp_get_theme();
 			if ( $thunderbear_parent->get( 'Name' ) === 'Thunderbear' ) {
 				?>
-				<h2 class="headline"><?php echo sprintf( __( 'How to Create a Child Theme for %1$s', 'vendd' ), THUNDERBEAR_NAME ); ?></h2>
+				<h2 class="headline"><?php echo sprintf( __( 'How to Create a Child Theme for %1$s', 'thunderbear' ), THUNDERBEAR_NAME ); ?></h2>
 				<ol>
-					<li><?php _e( 'Through FTP, navigate to <code>your_website/wp-content/themes/</code> and in that directory, create a new folder as the name of your child theme. Something like <code>vendd-child</code> is perfect.', 'vendd' ); ?></li>
-					<li><?php _e( 'Inside of your new folder, create a file called <code>style.css</code> (the name is NOT optional).', 'vendd' ); ?></li>
-					<li><?php _e( 'Inside of your new <code>style.css</code> file, add the following CSS:', 'vendd' ); ?>
+					<li><?php _e( 'Through FTP, navigate to <code>your_website/wp-content/themes/</code> and in that directory, create a new folder as the name of your child theme. Something like <code>thunderbear-child</code> is perfect.', 'thunderbear' ); ?></li>
+					<li><?php _e( 'Inside of your new folder, create a file called <code>style.css</code> (the name is NOT optional).', 'thunderbear' ); ?></li>
+					<li><?php _e( 'Inside of your new <code>style.css</code> file, add the following CSS:', 'thunderbear' ); ?>
 
-<pre class="vendd-pre">
+<pre class="thunderbear-pre">
 /*
 Theme Name: Thor Thunderbear Child
 Author:
@@ -223,7 +223,7 @@ Template: thor-thunderbear
 					<li><?php _e( 'Also inside of your folder, create another file called <code>functions.php</code> (the name is NOT optional).', 'thor-thunderbear' ); ?></li>
 					<li><?php _e( 'Inside of your new, blank <code>functions.php</code> file, add the following PHP:', 'thor-thunderbear' ); ?>
 
-<pre class="vendd-pre">
+<pre class="thunderbear-pre">
 &lt;?php
 /**
  * Thunderbear Child Theme Functions

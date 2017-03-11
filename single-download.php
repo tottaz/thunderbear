@@ -16,7 +16,7 @@ get_header(); ?>
 
 			<?php while ( have_posts() ) : the_post(); ?>
 	
-				<?php get_template_part( 'content', 'single-download' ); ?>
+				<?php get_template_part( 'content/content', 'single-download' ); ?>
 	
 				<?php thunderbear_post_nav(); ?>
 	

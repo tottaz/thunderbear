@@ -50,7 +50,7 @@ function thunderbear_fes_shortcodes_classes( $classes ) {
 		has_shortcode( $post->post_content, 'fes_registration_form' ) ||
 		has_shortcode( $post->post_content, 'fes_vendor_contact_form' )
 	) {
-		$classes[] = 'vendd-edd-fes-shortcode';
+		$classes[] = 'thunderbear-edd-fes-shortcode';
 	}
 
 	return $classes;

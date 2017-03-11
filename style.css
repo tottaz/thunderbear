@@ -268,6 +268,21 @@ Use it to make something cool, have fun, and share what you've learned with othe
 	display: block;
 }
 
+/*-------------------------------------------------------------- 
+10.4 Easy Digital Download 
+--------------------------------------------------------------*/
+.single .entry-header .entry-meta {
+	padding-bottom: 10px;
+	border-bottom: 1px dotted #f2f2f2;
+	margin: 0px 0px 10px;
+}
+
+.edd_download_inner .edd_download_title .entry-subtitle {
+	display: none;
+}
+
+
+
 /*--------------------------------------------------------------
 11.0 Infinite scroll
 --------------------------------------------------------------*/
@@ -1131,4 +1146,895 @@ button[type="submit"]:hover {
 		margin-right: 0;
 		min-height: 0;
 	}
+}
+
+/*--------------------------------------------------------------
+>>> Easy Digital Downloads (and supporting extensions)
+--------------------------------------------------------------*/
+.store-front-header,
+.download-term-header {
+	text-align: center;
+	margin: 0 auto 5%;
+	max-width: 722px;
+}
+.store-front-header .entry-title,
+.download-term-header .term-title {
+	font: 400 2.67em/1.4 "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+	margin-bottom: .4em;
+}
+#store-front,
+.entry-content .edd_downloads_list {
+	background: #fafafa;
+	border-radius: 4px;
+}
+.edd-required-indicator {
+	color: red;
+}
+
+/* [downloads] shortcode */
+.edd_download {
+	padding: 20px;
+}
+.edd_download_inner:before,
+.edd_download_inner:after{
+	content: '';
+	display: table;
+	clear: both;
+}
+
+/* shared column variation styles */
+.edd_download_columns_5 .edd_download,
+.edd_download_columns_6 .edd_download {
+	padding: 10px;
+}
+.edd_downloads_list[class*="edd_download_columns_"] .edd_download {
+	float: none !important;
+	display: inline-block;
+	vertical-align: top;
+}
+.edd_downloads_list[class*="edd_download_columns_"] > div[style="clear:both;"] {
+	display: none;
+}
+
+/* 1 column [downloads] */
+.edd_downloads_list.edd_download_columns_1 {
+	max-width: 720px;
+	margin: 0 auto;
+}
+
+.edd_downloads_list.edd_download_columns_1 .edd_download {
+	font-size: 1em;
+}
+
+/* 2 column [downloads] */
+.edd_downloads_list.edd_download_columns_2 .edd_download {
+	width: 49.6% !important;
+}
+
+/* 3 column [downloads] */
+.edd_downloads_list.edd_download_columns_3 .edd_download {
+	width: 32.89% !important;
+}
+.thunderbear-downloads-template .edd_downloads_list.edd_download_columns_3 .edd_download,
+.thunderbear-full-width-page-template .edd_downloads_list.edd_download_columns_3 .edd_download,
+.thunderbear-advanced-search-results .edd_downloads_list.edd_download_columns_3 .edd_download {
+	width: 33.03% !important;
+}
+.entry-content .edd_downloads_list.edd_download_columns_3 .edd_download {
+	font-size: .93em;
+}
+
+/* 4 column [downloads] */
+.edd_downloads_list.edd_download_columns_4 .edd_download {
+	width: 24.7% !important;
+}
+
+/* 5, 6 column [downloads] - Thunderbear will not support more than 5 columns wide on the EDD Downloads template */
+.edd_downloads_list.edd_download_columns_5 .edd_download,
+.edd_downloads_list.edd_download_columns_6 .edd_download {
+	width: 19.7% !important;
+}
+
+/* 4, 5, 6 column [downloads] - show 2 columns if NOT using the EDD Downloads template */
+.entry-content .edd_downloads_list.edd_download_columns_4 .edd_download,
+.entry-content .edd_downloads_list.edd_download_columns_5 .edd_download,
+.entry-content .edd_downloads_list.edd_download_columns_6 .edd_download {
+	padding: 20px;
+	width: 49.6% !important;
+}
+
+/* general [downloads] styles */
+.edd_download .edd_download_inner {
+	position: relative;
+	background: #fff;
+	padding: 0;
+	border-radius: 4px;
+	margin-bottom: 0;
+	-webkit-transition: all .3s;
+	-moz-transition: all .3s;
+	transition: all .3s;
+}
+.edd_download .edd_download_inner:hover {
+	box-shadow: 0 0 30px rgba(0, 0, 0, .08);
+}
+.edd_download_image img {
+	border-radius: 4px 4px 0 0;
+}
+.edd_download_byline {
+	color: #999;
+	font-size: .8em;
+	padding: 15px 0 10px;
+	border-bottom: 1px solid #f2f2f2;
+	margin: 0 20px;
+}
+.edd_byline_author_avatar img {
+	border-radius: 50%;
+	margin: -3px 5px 0 0;
+	vertical-align: middle;
+}
+.edd_byline_by {
+	font-style: italic;
+}
+.edd_byline_author_url {
+	color: #757575;
+	text-decoration: none;
+}
+.edd_byline_author_url:hover {
+	color: #757575;
+	text-decoration: underline;
+}
+.edd_download_title {
+	font: 300 1.5em/1.4 "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+	padding: 15px 20px 0;
+	margin-bottom: 15px;
+}
+.entry-content .edd_download_columns_2 .edd_download_title,
+.entry-content .edd_download_columns_3 .edd_download_title,
+.edd_download_columns_4 .edd_download_title,
+.edd_download_columns_5 .edd_download_title,
+.edd_download_columns_6 .edd_download_title {
+	font-size: 1.2em;
+}
+.edd_download_title a {
+	color: #555;
+	text-decoration: none;
+}
+.edd_download_excerpt,
+.edd_download_full_content {
+	color: #757575;
+	font-size: .87em;
+	padding: 0 20px 15px;
+}
+.entry-content .edd_download_columns_3 .edd_download_excerpt,
+.entry-content .edd_download_columns_3 .edd_download_full_content {
+	font-size: .87em;
+}
+.edd_download_full_content p:last-child,
+.edd_download_excerpt p:last-child {
+	margin-bottom: 0;
+}
+.thunderbear-price-button-container {
+	position: absolute;
+		bottom: 0;
+	display: none;
+	background: #fff;
+	font-size: .87em;
+	padding: 20px;
+	border-top: 3px solid #d5d5d5;
+	border-radius: 0 0 4px 4px;
+	width: 100%;
+	max-height: 375px;
+	overflow-y: auto;
+	box-shadow: 0px -2px 12px 0px rgba(21, 21, 21, .06);
+	z-index: 100;
+}
+.edd_download_buy_button {
+	font-size: .87em;
+	padding: 20px;
+}
+.entry-content .edd_download_buy_button {
+	border-top: 2px solid #f2f2f2;
+}
+.entry-content .edd_download_inner #edd-purchase-button,
+.entry-content .edd_download_inner .edd-submit,
+.entry-content .edd_download_inner input[type="submit"].edd-submit {
+	font-size: .87em;
+	padding: 4px 8px;
+}
+.entry-content .edd_download_inner input[type="number"] {
+	font-size: .87em;
+	padding: 2px 8px;
+}
+.product-price-wrap,
+.product-price-wrap:hover {
+	display: inline-block;
+	text-decoration: none;
+	margin: 0 20px 20px;
+}
+.product-price {
+	display: inline-block;
+	background: #f1f1f1;
+	color: #999;
+	font-size: .87em;
+	padding: 4px 8px;
+	border-radius: 3px;
+}
+.product-price:hover {
+	color: #555;
+}
+.thunderbear-price-button-icon {
+	display: inline-block;
+	-webkit-transition: all .2s;
+	-moz-transition: all .2s;
+	transition: all .2s;
+}
+.thunderbear-price-button-displayed .thunderbear-price-button-icon {
+	-webkit-transform: rotate(45deg);
+	-moz-transform: rotate(45deg);
+	-ms-transform: rotate(45deg);
+}
+.product-link {
+	position: absolute;
+		right: -10px;
+		bottom: -10px;
+	color: #d5d5d5;
+	font-size: 1.33em;
+	line-height: 1;
+	-webkit-transition: all .2s;
+	-moz-transition: all .2s;
+	transition: all .2s;
+	z-index: 101;
+}
+.edd_download:hover .product-link {
+	color: #555;
+}
+.thunderbear-price-button-container .edd_purchase_submit_wrapper {
+	display: block;
+}
+#edd_download_pagination,
+.edd_pagination,
+.fes-order-list-pagination-container,
+.fes-product-list-pagination-container,
+div[id*="edd_commissions_"] {
+	font-size: .87em;
+	text-align: center;
+	padding: 0 20px 40px;
+	margin-top: 30px;
+}
+#edd_download_pagination .page-numbers,
+.edd_pagination .page-numbers,
+div[class*="fes-"] > .page-numbers,
+div[id*="edd_commissions_"] .page-numbers {
+	background: #fff;
+	color: #555;
+	font-weight: 700;
+	text-decoration: none;
+	padding: 6px 10px;
+	border-radius: 3px;
+	margin-right: 6px;
+}
+.edd_pagination .page-numbers,
+div[class*="fes-"] > .page-numbers,
+div[id*="edd_commissions_"] .page-numbers {
+	background: #fafafa;
+}
+#edd_download_pagination .page-numbers.current,
+.edd_pagination .page-numbers.current,
+div[class*="fes-"] > .page-numbers.current,
+div[id*="edd_commissions_"] .page-numbers.current,
+#edd_download_pagination .page-numbers:hover,
+.edd_pagination .page-numbers:hover,
+div[class*="fes-"] > .page-numbers:hover,
+div[id*="edd_commissions_"] .page-numbers:hover {
+	color: #fff;
+}
+.store-pagination {
+	text-align: center;
+}
+.store-pagination .page-numbers {
+	display: inline-block;
+	padding: 0 4px;
+	margin-right: 6px;
+}
+.store-pagination .prev.page-numbers {
+	padding: 0 20px 0 0;
+}
+.store-pagination .next.page-numbers {
+	padding: 0 0 0 20px;
+}
+.no-downloads {
+	display: inline-block;
+	padding: 10px;
+}
+.downloads-footer {
+	color: #999;
+	font-style: italic;
+	padding: 0 20px;
+	margin: -10px 0 10px;
+}
+.widget_edd_product_details .downloads-footer {
+	padding: 0;
+	margin-bottom: 0;
+}
+.downloads-footer a {
+	color: #999;
+	text-decoration: none;
+}
+.downloads-footer a:hover {
+	text-decoration: underline;
+}
+.thunderbear-download-terms {
+	display: block;
+	color: #757575;
+	font-size: .8em;
+}
+.downloads-footer .fa {
+	margin-right: 4px;
+}
+
+/* EDD button styles */
+#edd-purchase-button,
+.edd-submit,
+input[type="submit"].edd-submit {
+	font-size: 1.2em;
+	border: none;
+	border-radius: 4px;
+	padding: 15px;
+}
+.content-area .thunderbear-price-button-container .thunderbear-price-button .edd-submit {
+	font-size: .87em;
+	padding: 4px 8px;
+}
+.content-area .thunderbear-price-button-container .edd_download_purchase_form {
+	margin-bottom: 0;
+}
+#edd_purchase_submit #edd-purchase-button {
+	display: block;
+	width: 100%;
+}
+.edd_go_to_checkout {
+	text-decoration: none;
+}
+.edd-submit.button.white {
+	color: #404040;
+}
+.edd-submit.button.gray {
+	background: #f1f1f1;
+	color: #404040;
+}
+.edd-submit.button.red {
+	background: #E74C3C;
+}
+.edd-submit.button.green {
+	background: #2ECC71;
+}
+.edd-submit.button.yellow {
+	background: #F1C40F;
+}
+.edd-submit.button.orange {
+	background: #E67E22;
+}
+.edd-submit.button.dark-gray {
+	background: #3d3d3d;
+}
+.edd-submit.button.white:hover {
+	background: #F2F3F5;
+}
+.edd-submit.button.gray:hover,
+.edd-submit.button.blue:hover,
+.edd-submit.button.red:hover,
+.edd-submit.button.green:hover,
+.edd-submit.button.yellow:hover,
+.edd-submit.button.orange:hover,
+.edd-submit.button.dark-gray:hover {
+	background: #3d3d3d;
+	color: #fff;
+}
+.edd-submit.button.dark-gray:hover {
+	background: #F2F3F5;
+	color: #555;
+}
+.edd_download_inner .edd_download_purchase_form .edd_download_quantity_wrapper .edd-item-quantity {
+	width: 65px;
+}
+.edd-cart-added-alert {
+	font-size: .8em;
+}
+.widget-area .edd-cart-added-alert {
+	right: 0;
+	bottom: -20px;
+}
+.edd_download_inner .edd-cart-added-alert {
+	position: static;
+	display: inline-block;
+}
+.edd_purchase_tax_rate {
+	color: #999;
+	font-size: .8em;
+	font-style: normal;
+	margin-top: 4px;
+}
+.thunderbear-price-button-container .edd_purchase_tax_rate,
+.thunderbear-price-button-container .edd_purchase_tax_rate {
+	position: static;
+	display: block;
+}
+.widget .edd_purchase_tax_rate {
+	position: absolute;
+}
+
+/* variable pricing w/ support for descriptions (http://wordpress.org/plugins/edd-variable-pricing-descriptions/) */
+.widget-area .edd_price_options ul {
+	border: 1px solid #f2f2f2;
+	border-radius: 4px;
+}
+.entry-content .edd_price_options ul {
+	border: none;
+	padding: 0;
+}
+.edd_download_purchase_form .edd_price_options {
+	color: #757575;
+	font-size: 13px;
+	margin-bottom: 6px;
+}
+.edd_download_purchase_form .edd_price_options li {
+	margin-bottom: 10px;
+}
+.widget-area .edd_download_purchase_form .edd_price_options li {
+	padding: 8px 15px;
+}
+.thunderbear-price-button-container .edd_download_purchase_form .edd_price_options li {
+	padding: 0 0 10px;
+	border-bottom: 2px solid #f2f2f2;
+	margin-bottom: 10px;
+}
+.thunderbear-price-button-container .edd_download_purchase_form .edd_price_options li:first-child {
+	border-radius: 4px 4px 0 0;
+}
+.edd_download_purchase_form .edd_price_options li:last-child {
+	border-bottom: none;
+	border-radius: 0 0 4px 4px;
+}
+.thunderbear-price-button-container .edd_download_purchase_form .edd_price_options li:last-child {
+	padding-bottom: 0;
+	margin-bottom: 0;
+}
+.thunderbear-price-button-container .edd_download_purchase_form .edd_price_options.edd_single_mode li:last-child {
+	padding-bottom: 5px;
+}
+.thunderbear-price-button-container .edd_download_purchase_form .edd_price_options.edd_multi_mode li:last-child {
+	padding-bottom: 10px;
+	border-bottom: 2px solid #f2f2f2;
+	margin-bottom: 10px;
+}
+.thunderbear-price-button-container .edd_single_mode + .edd_download_quantity_wrapper {
+	padding-top: 20px;
+	border-top: 1px solid #f2f2f2;
+}
+.thunderbear-price-button-container .edd_multi_mode + .edd_purchase_submit_wrapper {
+	padding-top: 10px;
+}
+.edd_download_purchase_form .edd_price_options li:before {
+	content: "";
+	margin: 0;
+}
+.edd_download_purchase_form .edd_price_options li input[type="radio"],
+.edd_download_purchase_form .edd_price_options li input[type="checkbox"] {
+	margin-right: 6px;
+}
+.edd_download_purchase_form .edd_price_options li .edd_price_option_name {
+	font-weight: 400;
+}
+.edd-variable-pricing-desc {
+	color: #999;
+	margin: 4px 0 0;
+}
+
+/* purchase form */
+.widget_edd_product_details .widget-title {
+	font-size: 1.8em;
+}
+.widget_edd_product_details .download-title {
+	display: none;
+}
+.single-download .widget_edd_product_details .edd_download_purchase_form {
+	position: relative;
+	margin-bottom: 0;
+}
+.widget_edd_product_details .edd_download_purchase_form .edd-submit,
+.content-area .edd_download_purchase_form .edd-submit {
+	font-size: 1rem;
+	padding: 10px;
+	border: none;
+	border-radius: 4px;
+	width: 100%;
+}
+.content-area .edd_download_purchase_form .edd-submit {
+	width: auto;
+}
+.content-area .edd_download_purchase_form {
+	margin-bottom: 1.5em;
+}
+.site-content .edd_download_purchase_form input[type="number"] {
+	padding: 2px 8px;
+}
+.site-content .edd_download_purchase_form .edd_download_quantity_wrapper:before {
+	color: #d8d8d8;
+	font-family: "FontAwesome";
+	content: "\f00d";
+	margin: 0 10px 0 0;
+}
+.site-content .edd_download_quantity_wrapper .edd_price_option_sep {
+	display: none;
+}
+.site-content .edd_download_purchase_form .edd_multi_mode .edd_download_quantity_wrapper:before {
+	margin: 0 10px 0 0;
+}
+.site-content .edd_download_purchase_form .edd_price_options.edd_multi_mode .edd_download_quantity_wrapper {
+	padding-left: 0;
+	margin-top: 2px;
+}
+.widget_edd_product_details .edd-meta {
+	font-size: 13px;
+	margin: 20px 0 0;
+}
+.widget_edd_product_details .edd-meta .download-terms {
+	display: block;
+}
+
+/* cart widget */
+.widget_edd_cart_widget .edd_subtotal {
+	background: #fafafa;
+	font-style: normal;
+	margin: 0;
+}
+.widget_edd_cart_widget .edd_subtotal .subtotal {
+	color: #19b219;
+}
+.widget_edd_cart_widget .edd-cart-item:before,
+.widget_edd_cart_widget .edd_subtotal:before,
+.widget_edd_cart_widget .edd_checkout:before,
+.widget_edd_cart_widget .cart_item.empty:before {
+	content: none;
+	margin: 0;
+}
+.edd_cart_item_image img {
+	border-radius: 3px;
+}
+.thunderbear-empty-cart .widget_edd_cart_widget {
+}
+.thunderbear-empty-cart .widget_edd_cart_widget .empty-cart-title {
+	font-size: 1.2em;
+	margin-bottom: 0;
+}
+.thunderbear-empty-cart .widget_edd_cart_widget .cart_item.empty > p,
+.thunderbear-empty-cart .widget_edd_cart_widget .edd_downloads_list {
+	display: none;
+}
+
+/* Author & Download Details */
+.thunderbear-download-author {
+	display: block;
+	text-align: center;
+	margin-bottom: 10px;
+}
+.thunderbear-download-author .avatar {
+	border-radius: 50%;
+}
+.thunderbear-author-contact {
+	padding: 10px 20px 8px;
+}
+.thunderbear-contact-method {
+	display: inline-block;
+	margin-right: 6px;
+}
+.thunderbear-social-profile {
+	font-size: 1.3em;
+	line-height: 1;
+}
+.thunderbear-twitter {
+	color: #00aced;
+}
+.thunderbear-google-plus {
+	color: #dd4b39;
+}
+.thunderbear-facebook {
+	color: #3b5998;
+}
+.thunderbear-youtube {
+	color: #bb0000;
+}
+.thunderbear-author-website {
+	float: right;
+}
+.thunderbear-website {
+	color: #555;
+}
+.thunderbear-social-profile:hover {
+	color: #555;
+}
+.thunderbear-website:hover {
+	color: #757575;
+}
+.widget li.thunderbear-details-list-item {
+	padding: 0;
+}
+.widget li.thunderbear-details-list-item:before {
+	content: "";
+	margin-right: 0;
+}
+.thunderbear-details-list-item .thunderbear-detail-name,
+.thunderbear-details-list-item .thunderbear-detail-info {
+	display: inline-block;
+	width: 48%;
+}
+.thunderbear-details-list-item .thunderbear-detail-name {
+	vertical-align: top;
+	padding: 10px 0 10px 17px;
+}
+.thunderbear-details-list-item .thunderbear-detail-info {
+	text-align: right;
+	padding: 10px 20px 10px 0;
+}
+.thunderbear-detail-name {
+	font-weight: 700;
+}
+
+/* EDD templates */
+.thunderbear-history-template #primary,
+.thunderbear-confirmation-template #primary,
+.thunderbear-members-template #primary,
+.thunderbear-failed-template #primary {
+	float: none;
+	padding-right: 0;
+	margin: 0 auto;
+	max-width: 722px;
+}
+#edd_checkout_form_wrap #edd-discount-code-wrap,
+#edd_checkout_form_wrap #edd-login-account-wrap,
+#edd_checkout_form_wrap #edd-new-account-wrap,
+#edd_checkout_form_wrap #edd_final_total_wrap,
+#edd_checkout_form_wrap #edd_show_discount,
+#edd_checkout_form_wrap fieldset,
+#edd_purchase_receipt,
+#edd_user_history,
+#edd_purchase_receipt_products,
+#edd_purchase_receipt thead th:first-child,
+#edd_purchase_receipt tbody td:first-child,
+#edd_purchase_receipt thead th:last-child,
+#edd_purchase_receipt tbody td:last-child,
+#edd_purchase_receipt_products tbody td,
+#edd_purchase_receipt_products th,
+#edd_purchase_form_wrap select {
+	border: 1px solid #f2f2f2;
+}
+#edd_checkout_form_wrap legend {
+	display: inline-block;
+}
+#edd_purchase_form_wrap select {
+	background: #fff;
+	border: 1px solid #e4e4e4;
+	height: 40px;
+}
+.thunderbear-checkout-template #masthead,
+.thunderbear-landing-page-template #masthead {
+	text-align: center;
+}
+.thunderbear-checkout-template #page,
+.thunderbear-landing-page-template #page {
+	width: 100%;
+	max-width: 800px;
+}
+.thunderbear-checkout-template #primary {
+	margin: 0 auto;
+	width: 100%;
+	padding-right: 0;
+}
+.thunderbear-checkout-template .entry-header {
+	display: none;
+}
+.thunderbear-checkout-template .entry-content {
+	margin-top: 0;
+}
+.hentry .entry-title.empty-cart-title {
+	margin-bottom: 15px;
+}
+.thunderbear-empty-cart .edd_downloads_list {
+	margin-top: 30px;
+}
+.thunderbear-checkout-template tbody tr {
+	font-size: .87em;
+}
+.entry-content #edd_purchase_receipt thead th:first-child,
+.entry-content #edd_purchase_receipt tbody td:first-child {
+	padding: 15px 10px;
+	border-width: 0 1px 0 0;
+}
+.entry-content #edd_purchase_receipt thead th:first-child,
+.entry-content #edd_purchase_receipt tbody tr:not(:last-child) td:first-child {
+	border-bottom-width: 1px;
+}
+.entry-content #edd_purchase_receipt thead th:last-child,
+.entry-content #edd_purchase_receipt tbody td:last-child,
+#edd_purchase_receipt_products th {
+	padding: 15px 10px;
+	border-width: 0 0 1px;
+}
+.entry-content #edd_purchase_receipt tbody tr:last-child td:last-child {
+	border-bottom-width: 0;
+}
+.entry-content #edd_purchase_receipt li {
+	list-style-position: inside;
+}
+.entry-content #edd_purchase_receipt li:only-child {
+	list-style: none;
+}
+.entry-content #edd_checkout_cart,
+.entry-content #edd_user_history,
+.entry-content #edd_purchase_receipt,
+.entry-content #edd_purchase_receipt_products {
+	border: 1px solid #f2f2f2;
+	border-width: 4px 1px 1px;
+	border-radius: 0 0 4px 4px;
+	margin: 0 0 1.5em;
+	width: 100%;
+}
+#edd_user_history th {
+	background: #fafafa;
+}
+.edd_purchase_row:last-child td {
+	border-bottom: none !important;
+}
+.entry-content #edd_checkout_cart td:first-child,
+.entry-content #edd_checkout_cart th:first-child {
+	border-left: none;
+}
+#edd_checkout_cart .edd_cart_header_row th,
+#edd_checkout_cart td,
+#edd_checkout_cart th:last-child {
+	border-bottom: none;
+	border-right: none;
+}
+#edd_checkout_form_wrap .edd-cart-adjustment input.edd-input,
+#edd_checkout_form_wrap .edd-cart-adjustment input.edd-submit {
+	max-width: 400px;
+}
+#edd-cancel-license-renewal {
+	color: #999;
+	font-size: .87em;
+}
+#edd-cancel-license-renewal:hover {
+	color: red;
+}
+#edd_checkout_cart_wrap #edd_checkout_cart .edd-submit {
+	font-size: .87em;
+	padding: 8px;
+}
+#edd_checkout_form_wrap #edd-discount-code-wrap input.edd-submit {
+	display: block;
+	font-size: .87em;
+	text-shadow: none;
+	padding: 7px;
+	border: none;
+	margin-top: 5px;
+	min-width: 158px;
+}
+#edd_checkout_form_wrap #edd-discount-code-wrap input.edd-submit:hover {
+	background: #3D3D3D;
+	color: #FFF;
+}
+#edd_user_history td,
+#edd_user_history th {
+	padding: 10px;
+}
+#edd_purchase_receipt,
+#edd_user_history {
+	margin-bottom: 2em;
+}
+.entry-content #edd_purchase_receipt thead th:first-child,
+.entry-content #edd_purchase_receipt tbody td:first-child {
+	padding: 15px 10px;
+	border-width: 0 1px 0 0;
+}
+.entry-content #edd_purchase_receipt thead th:first-child,
+.entry-content #edd_purchase_receipt tbody tr:not(:last-child) td:first-child {
+	border-bottom-width: 1px;
+}
+.entry-content #edd_purchase_receipt thead th:last-child,
+.entry-content #edd_purchase_receipt tbody td:last-child {
+	padding: 15px 10px;
+	border-width: 0 0 1px;
+}
+.entry-content #edd_purchase_receipt tbody tr:last-child td,
+.entry-content #edd_purchase_receipt_products tbody tr:last-child td {
+	border-bottom-width: 0;
+}
+#edd_purchase_receipt_products {
+	margin-bottom: 3em;
+}
+#edd_purchase_receipt_products th {
+	font-weight: bold;
+	padding: 15px 10px;
+}
+.entry-content #edd_purchase_receipt_products tbody td {
+	border-width: 0 0 1px;
+}
+#edd_purchase_receipt_products td {
+	padding: 15px 10px;
+}
+#edd_profile_editor_form {
+	background: #fafafa;
+	padding: 30px;
+}
+#edd_profile_editor_form label {
+	width: 200px;
+}
+.thunderbear-edd-fes-shortcode .edd_form input[type="text"],
+.thunderbear-edd-fes-shortcode .edd_form input[type="email"],
+.thunderbear-edd-fes-shortcode .edd_form input[type="url"],
+.thunderbear-edd-fes-shortcode .edd_form input[type="password"],
+.thunderbear-edd-fes-shortcode .edd_form input[type="search"],
+.thunderbear-edd-fes-shortcode .edd_form input[type="number"],
+.thunderbear-edd-fes-shortcode .edd_form textarea {
+	border-width: 1px 1px 4px;
+	border-radius: 0;
+	width: 300px;
+}
+.thunderbear-edd-fes-shortcode .edd_form select {
+	background: #fff;
+	border: 1px solid #e4e4e4;
+	border-radius: 0;
+	height: 40px;
+	width: 300px;
+}
+#edd_profile_editor_form legend,
+#edd_login_form legend,
+#edd_register_form legend {
+	display: block;
+	font-size: 1.2em;
+	font-weight: bold;
+	margin-bottom: 10px;
+}
+#edd_login_form p,
+#edd_register_form p {
+	margin-bottom: 12px;
+}
+#edd_profile_editor_form p > input:not([type="submit"]),
+#edd_profile_editor_form p > select,
+#edd_profile_editor_form p {
+	margin-bottom: 1em;
+}
+#edd_profile_editor_form .edd-profile-emails {
+	margin-bottom: 1em;
+}
+#edd_login_form,
+#edd_register_form {
+	background: #fafafa;
+	padding: 30px;
+}
+#edd_login_form label {
+	display: inline-block;
+	width: 150px;
+}
+#edd_login_submit {
+	min-width: 150px;
+}
+#edd_checkout_wrap #edd_checkout_form_wrap #edd_discount_code,
+#edd_checkout_wrap #edd_checkout_form_wrap #edd_purchase_submit {
+	background: none;
+}
+#edd_show_terms {
+	font-size: .87em;
+	margin-bottom: 10px;
+}
+#edd_show_terms a {
+	text-decoration: none;
+}
+#edd_terms {
+	color: #757575;
+	font-size: .87em;
+	margin-bottom: 10px;
+}
+.edd-lost-password {
+	margin-bottom: 0;
 }

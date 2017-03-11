@@ -25,9 +25,9 @@ class thunderbear_Author_Details extends WP_Widget {
 	public function __construct() {
 		parent::__construct(
 			'thunderbear_download_author',
-			THUNDERBEAR_NAME . ': ' . __( 'Download Author', 'vendd' ),
+			THUNDERBEAR_NAME . ': ' . __( 'Download Author', 'thunderbear' ),
 			array(
-				'description' => __( 'Display the download author\'s details such as join date and social networking links.', 'vendd' ),
+				'description' => __( 'Display the download author\'s details such as join date and social networking links.', 'thunderbear' ),
 			)
 		);
 	}
@@ -57,15 +57,15 @@ class thunderbear_Author_Details extends WP_Widget {
 		}
 		if ( $avatar ) {
 			?>
-			<span class="vendd-download-author"><?php echo get_avatar( $author->ID, 90 ); ?></span>
+			<span class="thunderbear-download-author"><?php echo get_avatar( $author->ID, 90 ); ?></span>
 			<?php
 		}
 		?>
-		<ul class="vendd-details-list vendd-author-info">
+		<ul class="thunderbear-details-list thunderbear-author-info">
 			<?php if ( $name ) { ?>
-				<li class="vendd-details-list-item vendd-author-details">
-					<span class="vendd-detail-name"><?php _e( 'Author:', 'vendd' ); ?></span>
-					<span class="vendd-detail-info">
+				<li class="thunderbear-details-list-item thunderbear-author-details">
+					<span class="thunderbear-detail-name"><?php _e( 'Author:', 'thunderbear' ); ?></span>
+					<span class="thunderbear-detail-info">
 						<?php if ( thunderbear_fes_is_activated() ) {
 							$vendor_url = thunderbear_edd_fes_author_url( get_the_author_meta( 'ID', $author->post_author ) );
 							?>
@@ -79,9 +79,9 @@ class thunderbear_Author_Details extends WP_Widget {
 				</li>
 			<?php } ?>
 			<?php if ( $signup_date ) { ?>
-				<li class="vendd-details-list-item vendd-author-details">
-					<span class="vendd-detail-name"><?php _e( 'Author since:', 'vendd' ); ?></span>
-					<span class="vendd-detail-info"><?php echo date_i18n( get_option( 'date_format' ), strtotime( $author->user_registered ) ); ?></span>
+				<li class="thunderbear-details-list-item thunderbear-author-details">
+					<span class="thunderbear-detail-name"><?php _e( 'Author since:', 'thunderbear' ); ?></span>
+					<span class="thunderbear-detail-info"><?php echo date_i18n( get_option( 'date_format' ), strtotime( $author->user_registered ) ); ?></span>
 				</li>
 			<?php } ?>
 			<?php
@@ -121,15 +121,15 @@ class thunderbear_Author_Details extends WP_Widget {
 						! empty( $facebook ) ||
 						! empty( $youtube ) ) {
 						?>
-						<li class="vendd-details-list-item vendd-author-details">
-							<div class="vendd-author-contact clear">
+						<li class="thunderbear-details-list-item thunderbear-author-details">
+							<div class="thunderbear-author-contact clear">
 								<?php
 									foreach ( $social_profiles as $profile ) {
 										if ( '' != $profile['data'] ) {
 											?>
-											<span class="vendd-contact-method">
+											<span class="thunderbear-contact-method">
 												<?php
-													printf( '<a href="%1$s" class="vendd-social-profile vendd-%2$s" target="_blank">%3$s</a>',
+													printf( '<a href="%1$s" class="thunderbear-social-profile thunderbear-%2$s" target="_blank">%3$s</a>',
 														esc_url( $profile['data'] ),
 														$profile['name'],
 														$profile['icon']
@@ -141,8 +141,8 @@ class thunderbear_Author_Details extends WP_Widget {
 									}
 								?>
 								<?php if ( ! empty( $website ) ) { ?>
-									<span class="vendd-contact-method vendd-author-website">
-										<a href="<?php echo esc_url( $website ); ?>" title="<?php echo esc_attr( $author->display_name ); echo _x( '\'s website', 'title attribute of the FES vendor\'s website link', 'vendd' ); ?>" class="vendd-social-profile vendd-website" target="_blank">
+									<span class="thunderbear-contact-method thunderbear-author-website">
+										<a href="<?php echo esc_url( $website ); ?>" title="<?php echo esc_attr( $author->display_name ); echo _x( '\'s website', 'title attribute of the FES vendor\'s website link', 'thunderbear' ); ?>" class="thunderbear-social-profile thunderbear-website" target="_blank">
 											<i class="fa fa-home"></i>
 										</a>
 									</span>
@@ -179,26 +179,26 @@ class thunderbear_Author_Details extends WP_Widget {
 		$signup_date = isset( $instance['signup_date'] ) ? (bool) $instance['signup_date'] : true;
 		$links       = isset( $instance['links'] )       ? (bool) $instance['links']       : true;
 		?>
-		<p class="vendd-widget-usage"><em><?php _e( 'Only for use in Download Sidebar', 'vendd' ); ?></em></p>
+		<p class="thunderbear-widget-usage"><em><?php _e( 'Only for use in Download Sidebar', 'thunderbear' ); ?></em></p>
 		<p>
-			<label for="<?php echo esc_attr( $this->get_field_id( 'title' ) ); ?>"><?php _e( 'Title:', 'vendd' ); ?></label>
-			<input class="widefat" id="<?php echo esc_attr( $this->get_field_id( 'title' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'title' ) ); ?>" type="text" value="<?php echo esc_attr( $title ); ?>" placeholder="<?php esc_attr_e( 'Leave empty for no title (recommended)', 'vendd' ); ?>">
+			<label for="<?php echo esc_attr( $this->get_field_id( 'title' ) ); ?>"><?php _e( 'Title:', 'thunderbear' ); ?></label>
+			<input class="widefat" id="<?php echo esc_attr( $this->get_field_id( 'title' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'title' ) ); ?>" type="text" value="<?php echo esc_attr( $title ); ?>" placeholder="<?php esc_attr_e( 'Leave empty for no title (recommended)', 'thunderbear' ); ?>">
 		</p>
 		<p>
 			<input <?php checked( $avatar ); ?> id="<?php echo esc_attr( $this->get_field_id( 'avatar' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'avatar' ) ); ?>" type="checkbox" />
-			<label for="<?php echo esc_attr( $this->get_field_id( 'avatar' ) ); ?>"><?php _e( 'Show Author Avatar', 'vendd' ); ?></label>
+			<label for="<?php echo esc_attr( $this->get_field_id( 'avatar' ) ); ?>"><?php _e( 'Show Author Avatar', 'thunderbear' ); ?></label>
 		</p>
 		<p>
 			<input <?php checked( $name ); ?> id="<?php echo esc_attr( $this->get_field_id( 'name' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'name' ) ); ?>" type="checkbox" />
-			<label for="<?php echo esc_attr( $this->get_field_id( 'name' ) ); ?>"><?php _e( 'Show Author Name', 'vendd' ); ?></label>
+			<label for="<?php echo esc_attr( $this->get_field_id( 'name' ) ); ?>"><?php _e( 'Show Author Name', 'thunderbear' ); ?></label>
 		</p>
 		<p>
 			<input <?php checked( $signup_date ); ?> id="<?php echo esc_attr( $this->get_field_id( 'signup_date' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'signup_date' ) ); ?>" type="checkbox" />
-			<label for="<?php echo esc_attr( $this->get_field_id( 'signup_date' ) ); ?>"><?php _e( 'Show Author Sign-up Date', 'vendd' ); ?></label>
+			<label for="<?php echo esc_attr( $this->get_field_id( 'signup_date' ) ); ?>"><?php _e( 'Show Author Sign-up Date', 'thunderbear' ); ?></label>
 		</p>
 		<p>
 			<input <?php checked( $links ); ?> id="<?php echo esc_attr( $this->get_field_id( 'links' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'links' ) ); ?>" type="checkbox" />
-			<label for="<?php echo esc_attr( $this->get_field_id( 'links' ) ); ?>"><?php _e( 'Show Author Social Links', 'vendd' ); ?></label>
+			<label for="<?php echo esc_attr( $this->get_field_id( 'links' ) ); ?>"><?php _e( 'Show Author Social Links', 'thunderbear' ); ?></label>
 		</p>
 		<?php
 	}
@@ -241,9 +241,9 @@ class thunderbear_Download_Details extends WP_Widget {
 	public function __construct() {
 		parent::__construct(
 			'thunderbear_download_details',
-			THUNDERBEAR_NAME . ': ' . __( 'Download Details', 'vendd' ),
+			THUNDERBEAR_NAME . ': ' . __( 'Download Details', 'thunderbear' ),
 			array(
-				'description' => __( 'Display the download details such as date published and total sales.', 'vendd' ),
+				'description' => __( 'Display the download details such as date published and total sales.', 'thunderbear' ),
 			)
 		);
 	}
@@ -274,9 +274,9 @@ class thunderbear_Download_Details extends WP_Widget {
 			echo $args['before_title'] . apply_filters( 'widget_title', $instance['title'] ). $args['after_title'];
 		}
 		?>
-		<ul class="vendd-details-list">
+		<ul class="thunderbear-details-list">
 			<?php if ( $published ) { ?>
-				<li class="vendd-details-list-item">
+				<li class="thunderbear-details-list-item">
 					<?php
 						$time_string = '<time class="entry-date published" datetime="%1$s">%2$s</time>';
 						$time_string = sprintf( $time_string,
@@ -286,30 +286,30 @@ class thunderbear_Download_Details extends WP_Widget {
 							esc_html( get_the_modified_date() )
 						);
 					?>
-					<span class="vendd-detail-name"><?php _e( 'Published:', 'vendd' ); ?></span>
-					<span class="vendd-detail-info"><?php echo $time_string; ?></span>
+					<span class="thunderbear-detail-name"><?php _e( 'Published:', 'thunderbear' ); ?></span>
+					<span class="thunderbear-detail-info"><?php echo $time_string; ?></span>
 				</li>
 			<?php } ?>
 			<?php if ( $sales ) { ?>
-				<li class="vendd-details-list-item">
+				<li class="thunderbear-details-list-item">
 					<?php $sales = apply_filters( 'thunderbear_download_sales_count', edd_get_download_sales_stats( $post->ID ), $post ); ?>
-					<span class="vendd-detail-name"><?php _e( 'Sales:', 'vendd' ); ?></span>
-					<span class="vendd-detail-info"><?php echo $sales; ?></span>
+					<span class="thunderbear-detail-name"><?php _e( 'Sales:', 'thunderbear' ); ?></span>
+					<span class="thunderbear-detail-info"><?php echo $sales; ?></span>
 				</li>
 			<?php } ?>
 			<?php if ( thunderbear_SL_is_activated() ) { ?>
 				<?php if ( $licensed ) { ?>
-					<li class="vendd-details-list-item vendd-license-details">
+					<li class="thunderbear-details-list-item thunderbear-license-details">
 						<?php $licensed = apply_filters( 'thunderbear_download_is_licensed', get_post_meta( get_the_ID(), '_edd_sl_enabled', true ), $post ); ?>
-						<span class="vendd-detail-name"><?php _e( 'Licensed:', 'vendd' ); ?></span>
-						<span class="vendd-detail-info"><?php echo $licensed ? __( 'Yes', 'vendd' ) : __( 'No', 'vendd' ); ?></span>
+						<span class="thunderbear-detail-name"><?php _e( 'Licensed:', 'thunderbear' ); ?></span>
+						<span class="thunderbear-detail-info"><?php echo $licensed ? __( 'Yes', 'thunderbear' ) : __( 'No', 'thunderbear' ); ?></span>
 					</li>
 				<?php } ?>
 				<?php if ( $version ) { ?>
-					<li class="vendd-details-list-item vendd-license-details">
+					<li class="thunderbear-details-list-item thunderbear-license-details">
 						<?php $version = apply_filters( 'thunderbear_download_version', get_post_meta( get_the_ID(), '_edd_sl_version', true ), $post ); ?>
-						<span class="vendd-detail-name"><?php _e( 'Current Version:', 'vendd' ); ?></span>
-						<span class="vendd-detail-info"><?php echo $version ? $version : __( 'Unversioned', 'vendd' ); ?></span>
+						<span class="thunderbear-detail-name"><?php _e( 'Current Version:', 'thunderbear' ); ?></span>
+						<span class="thunderbear-detail-info"><?php echo $version ? $version : __( 'Unversioned', 'thunderbear' ); ?></span>
 					</li>
 				<?php } ?>
 			<?php }
@@ -317,9 +317,9 @@ class thunderbear_Download_Details extends WP_Widget {
 					$categories = get_the_term_list( $post->ID, 'download_category', '', ', ', '' );
 					if ( '' != $categories ) {
 						?>
-						<li class="vendd-details-list-item">
-							<span class="vendd-detail-name"><?php _e( 'Categories:', 'vendd' ); ?></span>
-							<span class="vendd-detail-info"><?php echo $categories; ?></span>
+						<li class="thunderbear-details-list-item">
+							<span class="thunderbear-detail-name"><?php _e( 'Categories:', 'thunderbear' ); ?></span>
+							<span class="thunderbear-detail-info"><?php echo $categories; ?></span>
 						</li>
 						<?php
 					}
@@ -328,9 +328,9 @@ class thunderbear_Download_Details extends WP_Widget {
 					$tags = get_the_term_list( $post->ID, 'download_tag', '', ', ', '' );
 					if ( '' != $tags ) {
 						?>
-						<li class="vendd-details-list-item">
-							<span class="vendd-detail-name"><?php _e( 'Tags:', 'vendd' ); ?></span>
-							<span class="vendd-detail-info"><?php echo $tags; ?></span>
+						<li class="thunderbear-details-list-item">
+							<span class="thunderbear-detail-name"><?php _e( 'Tags:', 'thunderbear' ); ?></span>
+							<span class="thunderbear-detail-info"><?php echo $tags; ?></span>
 						</li>
 						<?php
 					}
@@ -366,36 +366,36 @@ class thunderbear_Download_Details extends WP_Widget {
 		$categories = isset( $instance['categories'] ) ? (bool) $instance['categories'] : true;
 		$tags       = isset( $instance['tags'] )       ? (bool) $instance['tags']       : true;
 		?>
-		<p class="vendd-widget-usage"><em><?php _e( 'Only for use in Download Sidebar', 'vendd' ); ?></em></p>
+		<p class="thunderbear-widget-usage"><em><?php _e( 'Only for use in Download Sidebar', 'thunderbear' ); ?></em></p>
 		<p>
-			<label for="<?php echo esc_attr( $this->get_field_id( 'title' ) ); ?>"><?php _e( 'Title:', 'vendd' ); ?></label>
+			<label for="<?php echo esc_attr( $this->get_field_id( 'title' ) ); ?>"><?php _e( 'Title:', 'thunderbear' ); ?></label>
 			<input class="widefat" id="<?php echo esc_attr( $this->get_field_id( 'title' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'title' ) ); ?>" type="text" value="<?php echo esc_attr( $title ); ?>">
 		</p>
 		<p>
 			<input <?php checked( $published ); ?> id="<?php echo esc_attr( $this->get_field_id( 'published' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'published' ) ); ?>" type="checkbox" />
-			<label for="<?php echo esc_attr( $this->get_field_id( 'published' ) ); ?>"><?php _e( 'Show Published Date', 'vendd' ); ?></label>
+			<label for="<?php echo esc_attr( $this->get_field_id( 'published' ) ); ?>"><?php _e( 'Show Published Date', 'thunderbear' ); ?></label>
 		</p>
 		<p>
 			<input <?php checked( $sales ); ?> id="<?php echo esc_attr( $this->get_field_id( 'sales' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'sales' ) ); ?>" type="checkbox" />
-			<label for="<?php echo esc_attr( $this->get_field_id( 'sales' ) ); ?>"><?php _e( 'Show Sales Total', 'vendd' ); ?></label>
+			<label for="<?php echo esc_attr( $this->get_field_id( 'sales' ) ); ?>"><?php _e( 'Show Sales Total', 'thunderbear' ); ?></label>
 		</p>
 		<?php if ( thunderbear_SL_is_activated() ) { ?>
 			<p>
 				<input <?php checked( $licensed ); ?> id="<?php echo esc_attr( $this->get_field_id( 'licensed' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'licensed' ) ); ?>" type="checkbox" />
-				<label for="<?php echo esc_attr( $this->get_field_id( 'licensed' ) ); ?>"><?php _e( 'Show License Status', 'vendd' ); ?></label>
+				<label for="<?php echo esc_attr( $this->get_field_id( 'licensed' ) ); ?>"><?php _e( 'Show License Status', 'thunderbear' ); ?></label>
 			</p>
 			<p>
 				<input <?php checked( $version ); ?> id="<?php echo esc_attr( $this->get_field_id( 'version' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'version' ) ); ?>" type="checkbox" />
-				<label for="<?php echo esc_attr( $this->get_field_id( 'version' ) ); ?>"><?php _e( 'Show Version Number', 'vendd' ); ?></label>
+				<label for="<?php echo esc_attr( $this->get_field_id( 'version' ) ); ?>"><?php _e( 'Show Version Number', 'thunderbear' ); ?></label>
 			</p>
 		<?php } ?>
 		<p>
 			<input <?php checked( $categories ); ?> id="<?php echo esc_attr( $this->get_field_id( 'categories' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'categories' ) ); ?>" type="checkbox" />
-			<label for="<?php echo esc_attr( $this->get_field_id( 'categories' ) ); ?>"><?php _e( 'Show Categories', 'vendd' ); ?></label>
+			<label for="<?php echo esc_attr( $this->get_field_id( 'categories' ) ); ?>"><?php _e( 'Show Categories', 'thunderbear' ); ?></label>
 		</p>
 		<p>
 			<input <?php checked( $tags ); ?> id="<?php echo esc_attr( $this->get_field_id( 'tags' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'tags' ) ); ?>" type="checkbox" />
-			<label for="<?php echo esc_attr( $this->get_field_id( 'tags' ) ); ?>"><?php _e( 'Show Tags', 'vendd' ); ?></label>
+			<label for="<?php echo esc_attr( $this->get_field_id( 'tags' ) ); ?>"><?php _e( 'Show Tags', 'thunderbear' ); ?></label>
 		</p>
 		<?php
 	}

@@ -22,7 +22,7 @@ if ( count( $orders ) > 0 ) {
 				<div class="vendor-order-details">
 					<div class="vendor-order-info-group">
 						<span class="vendor-order-label">
-							<?php echo _x( 'Price', 'FES vendor dashboard Order display', 'vendd' ) . ': '; ?>
+							<?php echo _x( 'Price', 'FES vendor dashboard Order display', 'thunderbear' ) . ': '; ?>
 						</span>
 						<span class="vendor-order-price">
 							<?php echo EDD_FES()->dashboard->order_list_total( $order->ID ); ?>
@@ -30,7 +30,7 @@ if ( count( $orders ) > 0 ) {
 					</div>
 					<div class="vendor-order-info-group">
 						<span class="vendor-order-label">
-							<?php echo _x( 'Customer', 'FES vendor dashboard Order display', 'vendd' ) . ': '; ?>
+							<?php echo _x( 'Customer', 'FES vendor dashboard Order display', 'thunderbear' ) . ': '; ?>
 						</span>
 						<span class="vendor-order-customer">
 							<?php echo EDD_FES()->dashboard->order_list_customer( $order->ID ); ?>
@@ -38,7 +38,7 @@ if ( count( $orders ) > 0 ) {
 					</div>
 					<div class="vendor-order-info-group">
 						<span class="vendor-order-label">
-							<?php echo _x( 'Details', 'FES vendor dashboard Order display', 'vendd' ) . ': '; ?>
+							<?php echo _x( 'Details', 'FES vendor dashboard Order display', 'thunderbear' ) . ': '; ?>
 						</span>
 						<span class="vendor-order-status-details">
 							<?php echo EDD_FES()->dashboard->order_list_date( $order->ID ); ?>

@@ -6,9 +6,9 @@
  */
 ?>
 
-<a class="product-link vendd-show-button" href="#"><i class="fa fa-plus-circle vendd-price-button-icon"></i></a>
-<div class="vendd-price-button-container">
-	<span class="vendd-price-button">
+<a class="product-link thunderbear-show-button" href="#"><i class="fa fa-plus-circle thunderbear-price-button-icon"></i></a>
+<div class="thunderbear-price-button-container">
+	<span class="thunderbear-price-button">
 		<?php echo edd_get_purchase_link( array( 'download_id' => get_the_ID() ) ); ?>
 	</span>
 </div>

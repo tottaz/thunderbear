@@ -25,7 +25,7 @@ if ( count( $products ) > 0 ) {
 				<div class="vendor-product-details">
 					<div class="vendor-product-info-group">
 						<span class="vendor-product-label">
-							<?php echo _x( 'Price', 'FES vendor dashboard Product display', 'vendd' ) . ': '; ?>
+							<?php echo _x( 'Price', 'FES vendor dashboard Product display', 'thunderbear' ) . ': '; ?>
 						</span>
 						<span class="vendor-product-price">
 							<?php echo EDD_FES()->dashboard->product_list_price( $product->ID ); ?>
@@ -33,7 +33,7 @@ if ( count( $products ) > 0 ) {
 					</div>
 					<div class="vendor-product-info-group">
 						<span class="vendor-product-label">
-							<?php echo _x( 'Purchases', 'FES vendor dashboard Product display', 'vendd' ) . ': '; ?>
+							<?php echo _x( 'Purchases', 'FES vendor dashboard Product display', 'thunderbear' ) . ': '; ?>
 						</span>
 						<span class="vendor-product-sales">
 							<?php echo EDD_FES()->dashboard->product_list_sales_esc( $product->ID) ; ?>
@@ -41,7 +41,7 @@ if ( count( $products ) > 0 ) {
 					</div>
 					<div class="vendor-product-info-group">
 						<span class="vendor-product-label">
-							<?php echo _x( 'Details', 'FES vendor dashboard Product display', 'vendd' ) . ': '; ?>
+							<?php echo _x( 'Details', 'FES vendor dashboard Product display', 'thunderbear' ) . ': '; ?>
 						</span>
 						<span class="vendor-product-status-details">
 							<?php echo EDD_FES()->dashboard->product_list_date( $product->ID ); ?>
@@ -59,7 +59,7 @@ if ( count( $products ) > 0 ) {
 	do_action( 'fes-product-table-column-value' );
 	endforeach;
 } else {
-	_e( 'No items found','vendd' );
+	_e( 'No items found','thunderbear' );
 }
 
 EDD_FES()->dashboard->product_list_pagination();
