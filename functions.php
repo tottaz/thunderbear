@@ -88,6 +88,18 @@ function thunderbear_setup() {
 endif; // thunderbear_setup
 add_action( 'after_setup_theme', 'thunderbear_setup' );
 
+
+// Show posts of 'post', 'page' and 'productdocuentation' post types on home page
+function search_filter( $query ) {
+  if ( !is_admin() && $query->is_main_query() ) {
+    if ( $query->is_search ) {
+      $query->set( 'post_type', array( 'post', 'page', 'productdocumentation' ) );
+    }
+  }
+}
+ 
+add_action( 'pre_get_posts','search_filter' );
+
 /**
  * Register widget area.
  *
@@ -136,6 +148,9 @@ add_action( 'wp_enqueue_scripts', 'thunderbear_scripts' );
  * Implement the Custom Header feature.
  */
 //require get_template_directory() . '/inc/custom-header.php';
+
+// Register Custom Navigation Walker
+require_once('wp-bootstrap-navwalker.php');
 
 /**
  * Custom template tags for this theme.

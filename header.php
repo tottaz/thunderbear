@@ -6,7 +6,8 @@
  *
  * @package thunderbear
  */
-?><!DOCTYPE html>
+?>
+<!DOCTYPE html>
 <html <?php language_attributes(); ?>>
 <head>
 	
@@ -42,6 +43,17 @@
 	================================================== -->
 	<header class="site-header" role="banner">
 		
+		<?php if ( thunderbear_edd_is_activated() && ! thunderbear_is_checkout() && ! thunderbear_is_landing_page() ) : ?>
+			<?php if ( apply_filters( 'thunderbear_show_header_cart_info', true, $post ) ) : ?>
+				<a href="<?php echo edd_get_checkout_uri(); ?>" class="header-cart">
+					<i class="fa fa-shopping-cart"></i>
+					<?php printf( __( 'Cart total: %s', 'thunderbear' ), '<span class="header-cart-total">' . edd_currency_filter( edd_format_amount( edd_get_cart_total() ) ) . '</span>' ); ?>
+				</a>
+			<?php endif; ?>
+		<?php endif; ?>
+		
+		<?php if ( ! thunderbear_is_checkout() && ! thunderbear_is_landing_page() && has_nav_menu( 'primary' ) ) : ?>
+
 		<!-- NAVBAR
 		================================================== -->
 		<div class="navbar-wrapper">
@@ -61,19 +73,25 @@
 						
 					</div><!-- navbar-header -->
 					
-					<!-- If the menu (WP admin area) is not set, then the "menu_class" is applied to "container". In other words, it overwrites the "container_class". Ref: http://wordpress.org/support/topic/wp_nav_menu-menu_class-usage-bug?replies=4 -->
-					
 					<?php
-						wp_nav_menu( array(
-							
-							'theme_location'	=> 'primary',
-							'container'			=> 'nav',
-							'container_class'	=> 'navbar-collapse collapse',
-							'menu_class'		=> 'nav navbar-nav navbar-right'
-						) );
-					?>
+                		wp_nav_menu( array(
+                    		'menu'              => 'primary',
+                    		'theme_location'    => 'primary',
+                    		'depth'             => 4,
+                    		'container'         => 'div',
+                    		'container_class'   => 'collapse navbar-collapse',
+            				'container_id'      => 'bs-example-navbar-collapse-1',
+                    		'menu_class'        => 'nav navbar-nav navbar-right',
+                    		'fallback_cb'       => 'wp_bootstrap_navwalker::fallback',
+                   	 		'walker'            => new wp_bootstrap_navwalker())
+                		) ;
+            		?>
 					
 				</div><!-- container -->
 			</div><!-- navbar -->
 		</div><!-- navbar-wrapper -->
+		<?php endif ?>
+
 	</header>
+
+	<div id="content" class="site-content">

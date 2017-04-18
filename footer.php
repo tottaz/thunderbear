@@ -8,6 +8,8 @@
  */
 ?>
 
+	</div><!-- #content -->
+
 <?php wp_footer(); ?>
 
 <!-- SIGN UP SECTION
@@ -94,10 +96,5 @@
 <script src="<?php echo esc_url( get_template_directory_uri() ) ?>/assets/js/bootstrap.min.js"></script>
 <script src="<?php echo esc_url( get_template_directory_uri() ) ?>/assets/js/main.js"></script>
 
-<!-- TypeKit Fonts -->
-<!--
-<script src="//use.typekit.net/gla7wnd.js"></script>
-<script>try{Typekit.load();}catch(e){}</script>
--->
 </body>
 </html>
