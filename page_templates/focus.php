@@ -1,6 +1,7 @@
 <?php
 /**
  * Template name: Focus Page
+ * Template Post Type: post, page, product
  *
  * A full-width page template with a narrow, centered content column
  *

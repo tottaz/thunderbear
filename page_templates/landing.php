@@ -1,6 +1,7 @@
 <?php
 /**
  * Template name: Landing Page
+ * Template Post Type: post, page, product, productdocumentation
  *
  * A single column landing page template page template
  *

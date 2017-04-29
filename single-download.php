@@ -5,6 +5,7 @@
  * @package thunderbear
  */
 
+
 get_header(); ?>
 
 	<!-- Easy Digital Download Content
@@ -16,14 +17,17 @@ get_header(); ?>
 
 			<?php while ( have_posts() ) : the_post(); ?>
 	
-				<?php get_template_part( 'content/content', 'single-download' ); ?>
+				<?php get_template_part( 'content/content', 'download' ); ?>
 	
 				<?php thunderbear_post_nav(); ?>
 	
 				<?php
-					// If comments are open or we have at least one comment, load up the comment template
-					if ( comments_open() || get_comments_number() ) :
-						comments_template();
+					// comments on downloads? (customizer)
+					if ( get_theme_mod( 'thunderbear_download_comments' ) ) :
+						// If comments are open or we have at least one comment, load up the comment template
+						if ( comments_open() || get_comments_number() ) :
+							comments_template();
+						endif;
 					endif;
 				?>
 	

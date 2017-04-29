@@ -22,6 +22,7 @@
 			?>
 		</div>
 
+
 		<?php if ( thunderbear_fes_is_activated() || apply_filters( 'thunderbear_show_single_download_author_details', false, $post ) ) { ?>
 			<div class="widget widget_download_author">
 				<?php $user = new WP_User( $post->post_author ); ?>

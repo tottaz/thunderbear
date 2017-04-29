@@ -1,45 +1,35 @@
 <?php
 /*
-Template Name Posts: Full-width Template
+Post Template: Full Width Template
 */
-?>
-$thumbnail_url	= wp_get_attachment_url( get_post_thumbnail_id( $post->ID ) );
-get_header();
-?>
 
-<!-- FEATURE IMAGE
-================================================== -->
+get_header(); ?>
 
-<?php if ( has_post_thumbnail() ) { ?>
-
-<section class="feature-image feature-image-default" style="background:url('<?php echo $thumbnail_url; ?>') no-repeat; background-size: cover;" data-type="background" data-speed="2">
-	<h1 class="page-title"><?php the_title(); ?></h1>
-</section>
-
-<?php } else { // Fallback image ?>
-
-<section class="feature-image feature-image-default" data-type="background" data-speed="2">
-	<h1 class="page-title"><?php the_title(); ?></h1>
-</section>
-
-<?php } ?>
-
-<div class="container">
-	<div class="row" id="primary">
-		<div id="content" class="col-sm-12">
-			
-			<section class="main-content">
+	<!-- BLOG CONTENT
+	================================================== -->
+	<div class="container">
+		<div class="row" id="primary">
 				
-				<?php while ( have_posts() ) : the_post(); ?>
-					
-					<?php the_content(); ?>
-					
-				<?php endwhile; // end of the loop ?>
-				
-			</section><!-- main-content -->
+			<main id="content" class="col-sm-12">
+
+			<?php while ( have_posts() ) : the_post(); ?>
+	
+				<?php get_template_part( 'content/content', 'single' ); ?>
+	
+				<?php thunderbear_post_nav(); ?>
+	
+				<?php
+					// If comments are open or we have at least one comment, load up the comment template
+					if ( comments_open() || get_comments_number() ) :
+						comments_template();
+					endif;
+				?>
+	
+			<?php endwhile; // end of the loop. ?>
+
+			</main><!-- #content -->
 			
-		</div><!-- content -->
-	</div><!-- row -->
-</div><!-- container -->
+		</div><!-- #primary -->
+	</div><!-- .container -->
 
 <?php get_footer(); ?>

@@ -1,5 +1,8 @@
 <?php
-/* Template Name: Full-width Template */	
+/* 
+	Template Name: Full-width Template 
+	Template Post Type: post, page, product, productdocumentation
+*/	
 		
 $thumbnail_url	= wp_get_attachment_url( get_post_thumbnail_id( $post->ID ) );
 get_header();

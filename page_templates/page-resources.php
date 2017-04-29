@@ -1,5 +1,8 @@
 <?php
-/* Template Name: Resources Page */	
+/* 
+	Template Name: Resources Page 
+	Template Post Type: post, page, product, productdocumentation
+*/	
 
 get_header();
 

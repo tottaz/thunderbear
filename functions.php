@@ -215,6 +215,11 @@ if ( thunderbear_edd_is_activated() ) {
 	require get_template_directory() . '/inc/admin/widgets.php';
 }
 
+function prefix_theme_updater() {
+	require( get_template_directory() . '/updater/theme-updater.php' );
+}
+add_action( 'after_setup_theme', 'prefix_theme_updater' );
+
 /**
  * Replaces the excerpt "more" text by a link.
  */
