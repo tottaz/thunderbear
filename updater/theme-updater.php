@@ -16,7 +16,7 @@ $updater = new EDD_Theme_Updater_Admin(
 	// Config settings
 	$config = array(
 		'remote_api_url' => 'https://thunderbeardesign.com', // Site where EDD is hosted
-		'item_name'      => 'Thor Thunderbear', // Name of theme
+		'item_name'      => 'WP Thor ThunderBear', // Name of theme
 		'theme_slug'     => 'thor-thunderbear', // Theme slug
 		'version'        => '1.0.0', // The current version of this theme
 		'author'         => 'ThunderBear Design', // The author of this theme
