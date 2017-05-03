@@ -10,7 +10,7 @@
  */
 define( 'THUNDERBEAR_NAME', 'ThunderBear Design' );
 define( 'THUNDERBEAR_AUTHOR', 'ThunderBear Design Team' );
-define( 'THUNDERBEAR_VERSION', '1.0.0' );
+define( 'THUNDERBEAR_VERSION', '1.3.0' );
 define( 'THUNDERBEAR_HOME', 'https://thunderbeardesign.com/downloads/thor-thunderbear' );
 
 /**
