@@ -21,7 +21,7 @@
 		<div class="row">
 			<div class="col-sm-6 col-sm-offset-3">
 				<h2><?php echo get_field('wp_support_text'); ?></h2>
-				<p><a href="<?php echo get_field('wp_support_button_text'); ?>" class="btn btn-lg btn-block btn-success"><?php echo get_field('wp_support_url'); ?></a></p>
+				<p><a href="<?php echo get_field('wp_support_url'); ?>" class="btn btn-lg btn-block btn-success"><?php echo get_field('wp_support_button_text'); ?></a></p>
 			</div><!-- end col -->
 		</div><!-- row -->
 	</div><!-- container -->
